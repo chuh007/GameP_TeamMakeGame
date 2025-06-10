@@ -1,23 +1,24 @@
 #pragma once
-#include "ObjectManager.h"
+#include "Pos.h"
+#include <iostream>
+using std::cout;
+class ObjectManager;
+
 class GameObject
 {
-private:
-	GameObject()
-	{
-		ObjectManager::GetInst()->AddObject(this);
-	};
 public:
-	virtual void Update() abstract
+	GameObject();
+	virtual void Update()
 	{
 
 	}
-	virtual void Render() abstract
+	virtual void Render()
 	{
 
 	}
 
 public:
 	bool isDead;
+	POS curPos;
 };
 
