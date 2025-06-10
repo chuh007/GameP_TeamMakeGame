@@ -49,7 +49,21 @@
     <ClCompile Include="Mci.cpp">
       <Filter>07.Moudule</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObject.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveEntity.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Pos.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.h">
@@ -70,6 +84,20 @@
     <ClInclude Include="defines.h">
       <Filter>07.Moudule</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObject.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Pos.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveEntity.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
