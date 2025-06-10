@@ -34,5 +34,42 @@
     <ClCompile Include="main.cpp">
       <Filter>01.Core</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>04.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>07.Moudule</Filter>
+    </ClCompile>
+    <ClCompile Include="Mci.cpp">
+      <Filter>07.Moudule</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scene.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>07.Moudule</Filter>
+    </ClInclude>
+    <ClInclude Include="Mci.h">
+      <Filter>07.Moudule</Filter>
+    </ClInclude>
+    <ClInclude Include="defines.h">
+      <Filter>07.Moudule</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h" />
   </ItemGroup>
 </Project>
