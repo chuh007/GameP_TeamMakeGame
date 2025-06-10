@@ -34,5 +34,34 @@
     <ClCompile Include="main.cpp">
       <Filter>01.Core</Filter>
     </ClCompile>
+    <ClCompile Include="MoveEntity.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Pos.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Enums.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveEntity.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Pos.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
