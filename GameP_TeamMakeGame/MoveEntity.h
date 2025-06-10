@@ -1,8 +1,9 @@
 #pragma once
 #include "Enums.h"
 #include "Pos.h"
+#include "GameObject.h"
 
-class MoveEntity // : public GameObject
+class MoveEntity : public GameObject
 {
 public:
 	MoveEntity(int setSpeed);
@@ -16,5 +17,6 @@ protected:
 	int moveX;
 	int moveY;
 	int moveSpeed;
+	int life;
 };
 

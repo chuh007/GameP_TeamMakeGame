@@ -1,6 +1,8 @@
 #include "Enemy.h"
+#include "Console.h"
+#include "BulletManager.h"
 
-Enemy::Enemy(Direction myDir, int speed) : MoveEntity(speed)
+Enemy::Enemy(Direction myDir, int speed , int lifeSet) : MoveEntity(speed)
 {
 	const int SPAWN_X[4] = { 0,0,0,0 };
 	const int SPAWN_Y[4] = { 0,0,0,0 };
@@ -11,6 +13,7 @@ Enemy::Enemy(Direction myDir, int speed) : MoveEntity(speed)
 	nowPos->SetPos(SPAWN_X[dirMove], SPAWN_Y[dirMove]);
 	moveX = MOVE_X[dirMove];
 	moveY = MOVE_Y[dirMove];
+	life = lifeSet;
 }
 
 Enemy::~Enemy()
@@ -18,7 +21,7 @@ Enemy::~Enemy()
 
 }
 
-const bool Enemy::CheckFeedback(const Bullet& bullet)const
+bool Enemy::CheckFeedback(const Bullet& bullet)
 {
 	switch (dir)
 	{
@@ -35,7 +38,7 @@ const bool Enemy::CheckFeedback(const Bullet& bullet)const
 	}
 }
 
-const bool Enemy::CheckFinded(const Direction playerDir) const
+bool Enemy::CheckFinded(const Direction playerDir)
 {
 	switch (dir)
 	{
@@ -50,4 +53,35 @@ const bool Enemy::CheckFinded(const Direction playerDir) const
 	default:
 		return false;
 	}
+}
+
+void Enemy::Update()
+{
+	Move();
+	for (auto& i : BulletManager::GetInst()->GetBullets())
+	{
+		if (CheckFeedback(*i))
+		{
+			life--;
+			if (life <= 0)
+			{
+				isDead = true;
+				i->isDead = true;
+				continue;
+			}
+		}
+	}
+}
+
+void Enemy::Render()
+{
+	Gotoxy(nowPos->x, nowPos->y);
+	/*if (CheckFinded(Player::dis))
+	{
+		cout << "¢ß";
+	}
+	else
+	{
+		cout << "  ";
+	}*/
 }

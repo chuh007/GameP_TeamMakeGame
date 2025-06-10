@@ -4,9 +4,11 @@
 class Enemy : public MoveEntity
 {
 public:
-	Enemy(Direction myDir, int speed);
+	Enemy(Direction myDir, int speed , int lifeSet);
 	~Enemy();
 public:
-	const bool CheckFeedback(const Bullet& bullet)const;
-	const bool CheckFinded(const Direction playerDir)const;
+	bool CheckFeedback(const Bullet& bullet);
+	bool CheckFinded(const Direction playerDir);
+	virtual void Update() override;
+	virtual void Render() override;
 };
