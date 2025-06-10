@@ -138,6 +138,7 @@
     <ClCompile Include="Mci.cpp" />
     <ClCompile Include="MoveEntity.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pos.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="Mci.h" />
     <ClInclude Include="MoveEntity.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Pos.h" />
     <ClInclude Include="Scene.h" />
   </ItemGroup>
