@@ -1,24 +1,23 @@
 #pragma once
-#include "Pos.h"
+#include "Position.h"
 #include <iostream>
 using std::cout;
+using std::string;
 class ObjectManager;
 
 class GameObject
 {
 public:
-	GameObject();
-	virtual void Update()
-	{
-
-	}
-	virtual void Render()
-	{
-
-	}
-
+	GameObject(Position _pos = { 0,0 });
+	virtual ~GameObject() = default;
+	virtual void Update() abstract;
+	virtual void Render() abstract;
+public:
+	const Position& GetPos() const { return m_pos; }
 public:
 	bool isDead;
-	POS curPos;
+protected:
+	Position m_pos;
+	string m_renderIcon;
 };
 

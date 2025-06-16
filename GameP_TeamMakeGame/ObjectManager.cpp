@@ -19,7 +19,7 @@ void ObjectManager::Update()
 	{
 		if (m_objects[i]->isDead)
 		{
-			delete m_objects[i];
+			SAFE_DELETE(m_objects[i]);
 			m_objects.erase(m_objects.begin() + i);
 			continue;
 		}
@@ -27,6 +27,7 @@ void ObjectManager::Update()
 		m_objects[i]->Render();
 	}
 }
+
 
 void ObjectManager::AddObject(GameObject* obj)
 {

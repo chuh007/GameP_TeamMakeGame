@@ -1,12 +1,15 @@
 #pragma once
-#include "MoveEntity.h"
+#include "CharacterObject.h"
 #include <vector>
-class Bullet : public MoveEntity
+class Bullet : public CharacterObject
 {
 public:
-	Bullet(Direction myDir, int speed , int lifeSet);
+	Bullet(Dir myDir, int speed , int lifeSet);
 	~Bullet();
 public:
 	virtual void Update() override;
 	virtual void Render() override;
+
+private:
+	Dir m_dir;
 };

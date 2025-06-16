@@ -130,14 +130,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="BulletManager.cpp" />
+    <ClCompile Include="CharacterObject.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="ICommand.cpp" />
+    <ClCompile Include="IMovable.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mci.cpp" />
+    <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="MoveEntity.cpp" />
+    <ClCompile Include="Muzzle.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pos.cpp" />
@@ -145,17 +150,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="BulletManager.h" />
+    <ClInclude Include="CharacterObject.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Core.h" />
-    <ClInclude Include="defines.h" />
+    <ClInclude Include="Define.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ICommand.h" />
+    <ClInclude Include="IMovable.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Mci.h" />
+    <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="MoveEntity.h" />
+    <ClInclude Include="Muzzle.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pos.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -57,7 +57,7 @@ COORD GetCursorPos()
 	return buf.dwCursorPosition;
 }
 
-COORD GetConsoleResolution()
+Position GetConsoleResolution()
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO buf;

@@ -4,11 +4,11 @@
 class Enemy : public MoveEntity
 {
 public:
-	Enemy(Direction myDir, int speed , int lifeSet);
+	Enemy(Dir myDir, int speed , int lifeSet);
 	~Enemy();
 public:
 	bool CheckFeedback(const Bullet& bullet);
-	bool CheckFinded(const Direction playerDir);
+	bool CheckFinded(const Dir playerDir);
 	virtual void Update() override;
 	virtual void Render() override;
 };

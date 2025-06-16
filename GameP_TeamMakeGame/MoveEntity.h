@@ -12,7 +12,7 @@ public:
 	void Move();
 public:
 	PPOS nowPos;
-	Direction dir;
+	Dir dir;
 protected:
 	int moveX;
 	int moveY;

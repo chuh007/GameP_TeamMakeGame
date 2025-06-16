@@ -1,8 +1,7 @@
 #include "Enemy.h"
 #include "Console.h"
-#include "BulletManager.h"
 
-Enemy::Enemy(Direction myDir, int speed , int lifeSet) : MoveEntity(speed)
+Enemy::Enemy(Dir myDir, int speed , int lifeSet) : MoveEntity(speed)
 {
 	const int SPAWN_X[4] = { 0,0,0,0 };
 	const int SPAWN_Y[4] = { 0,0,0,0 };
@@ -25,31 +24,31 @@ bool Enemy::CheckFeedback(const Bullet& bullet)
 {
 	switch (dir)
 	{
-	case Direction::UP:
-		return bullet.dir == Direction::DOWN && nowPos->y <= bullet.nowPos->y;
-	case Direction::DOWN:
-		return bullet.dir == Direction::UP && nowPos->y >= bullet.nowPos->y;
-	case Direction::LEFT:
-		return bullet.dir == Direction::RIGHT && nowPos->x <= bullet.nowPos->x;
-	case Direction::RIGHT:
-		return bullet.dir == Direction::LEFT && nowPos->x >= bullet.nowPos->x;
-	default:
+	//case Dir::UP:
+	//	return bullet.dir == Dir::DOWN && nowPos->y <= bullet.nowPos->y;
+	//case Dir::DOWN:
+	//	return bullet.dir == Dir::UP && nowPos->y >= bullet.nowPos->y;
+	//case Dir::LEFT:
+	//	return bullet.dir == Dir::RIGHT && nowPos->x <= bullet.nowPos->x;
+	//case Dir::RIGHT:
+	//	return bullet.dir == Dir::LEFT && nowPos->x >= bullet.nowPos->x;
+	//default:
 		return false;
 	}
 }
 
-bool Enemy::CheckFinded(const Direction playerDir)
+bool Enemy::CheckFinded(const Dir playerDir)
 {
 	switch (dir)
 	{
-	case Direction::UP:
-		return playerDir == Direction::DOWN;
-	case Direction::DOWN:
-		return playerDir == Direction::UP;
-	case Direction::LEFT:
-		return playerDir == Direction::RIGHT;
-	case Direction::RIGHT:
-		return playerDir == Direction::LEFT;
+	case Dir::UP:
+		return playerDir == Dir::DOWN;
+	case Dir::DOWN:
+		return playerDir == Dir::UP;
+	case Dir::LEFT:
+		return playerDir == Dir::RIGHT;
+	case Dir::RIGHT:
+		return playerDir == Dir::LEFT;
 	default:
 		return false;
 	}
@@ -58,19 +57,19 @@ bool Enemy::CheckFinded(const Direction playerDir)
 void Enemy::Update()
 {
 	Move();
-	for (auto& i : BulletManager::GetInst()->GetBullets())
-	{
-		if (CheckFeedback(*i))
-		{
-			life--;
-			if (life <= 0)
-			{
-				isDead = true;
-				i->isDead = true;
-				continue;
-			}
-		}
-	}
+	//for (auto& i : BulletManager::GetInst()->GetBullets())
+	//{
+	//	if (CheckFeedback(*i))
+	//	{
+	//		life--;
+	//		if (life <= 0)
+	//		{
+	//			isDead = true;
+	//			i->isDead = true;
+	//			continue;
+	//		}
+	//	}
+	//}
 }
 
 void Enemy::Render()

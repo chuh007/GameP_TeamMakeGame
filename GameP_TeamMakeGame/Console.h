@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include "Position.h"
 #include <io.h>
 #include<fcntl.h>
 using std::cin;
@@ -33,6 +34,6 @@ enum class COLOR
 void SetColor(COLOR _textcolor = COLOR::WHITE, COLOR
     _bgcolor = COLOR::BLACK);
 
-COORD GetConsoleResolution();
+Position GetConsoleResolution();
 void FrameSync(unsigned int _frame);
 void SetConsoleFont(LPCWSTR _fontname, COORD _size, UINT _weight);
