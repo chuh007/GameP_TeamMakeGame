@@ -9,9 +9,9 @@ class GameObject
 {
 public:
 	GameObject(Position _pos = { 0,0 });
-	virtual ~GameObject() = default;
-	virtual void Update() abstract;
-	virtual void Render() abstract;
+	virtual ~GameObject();
+	virtual void Update();
+	virtual void Render();
 public:
 	const Position& GetPos() const { return m_pos; }
 public:
@@ -19,5 +19,6 @@ public:
 protected:
 	Position m_pos;
 	string m_renderIcon;
+	bool m_isranderable;
 };
 

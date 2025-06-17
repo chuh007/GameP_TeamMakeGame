@@ -1,12 +1,12 @@
 #pragma once
 #include "ICommand.h"
 #include "Enums.h"
-class MoveCommand : public ICommand
+class FireCommand : public ICommand
 {
 public:
-	MoveCommand(Dir _dir);
+	FireCommand(Key _key);
 	virtual void Execute(GameObject* _gameobject) override;
 private:
-	Dir m_dir;
+	Key m_key;
 };
 

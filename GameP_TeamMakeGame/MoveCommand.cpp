@@ -7,9 +7,9 @@ MoveCommand::MoveCommand(Dir _dir)
 {
 }
 
-void MoveCommand::Execute(GameObject* _actor)
+void MoveCommand::Execute(GameObject* _gameobject)
 {
-	IMovable* mover = dynamic_cast<IMovable*>(_actor);
+	IMovable* mover = dynamic_cast<IMovable*>(_gameobject);
 	if (mover)
 	{
 		mover->Move(m_dir);
