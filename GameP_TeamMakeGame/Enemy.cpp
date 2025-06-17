@@ -1,18 +1,15 @@
 #include "Enemy.h"
 #include "Console.h"
+#include "EnemyData.h"
 
-Enemy::Enemy(Dir myDir, int speed , int lifeSet) : MoveEntity(speed)
+Enemy::Enemy(Dir myDir, int speedMultiply, int lifeMultiply) : CharacterObject({ SPAWN_X[(int)myDir], SPAWN_Y[(int)myDir] })
 {
-	const int SPAWN_X[4] = { 0,0,0,0 };
-	const int SPAWN_Y[4] = { 0,0,0,0 };
-	const int MOVE_X[4] = { 0,0,-1,1 };
-	const int MOVE_Y[4] = { -1,1,0,0 };
 	dir = myDir;
 	int dirMove = (int)myDir;
-	nowPos->SetPos(SPAWN_X[dirMove], SPAWN_Y[dirMove]);
-	moveX = MOVE_X[dirMove];
-	moveY = MOVE_Y[dirMove];
-	life = lifeSet;
+	moveSpeed = MOVE_SPEED * speedMultiply;
+	moveX = MOVE_X[dirMove] * moveSpeed;
+	moveY = MOVE_Y[dirMove] * moveSpeed;
+	life = LIFE_INIT * lifeMultiply;
 }
 
 Enemy::~Enemy()
@@ -25,13 +22,13 @@ bool Enemy::CheckFeedback(const Bullet& bullet)
 	switch (dir)
 	{
 	//case Dir::UP:
-	//	return bullet.dir == Dir::DOWN && nowPos->y <= bullet.nowPos->y;
+	//	return bullet.dir == Dir::DOWN && nowPos->y <= bullet.GetPos()->y;
 	//case Dir::DOWN:
-	//	return bullet.dir == Dir::UP && nowPos->y >= bullet.nowPos->y;
+	//	return bullet.dir == Dir::UP && nowPos->y >= bullet.GetPos()->y;
 	//case Dir::LEFT:
-	//	return bullet.dir == Dir::RIGHT && nowPos->x <= bullet.nowPos->x;
+	//	return bullet.dir == Dir::RIGHT && nowPos->x <= bullet.GetPos()->x;
 	//case Dir::RIGHT:
-	//	return bullet.dir == Dir::LEFT && nowPos->x >= bullet.nowPos->x;
+	//	return bullet.dir == Dir::LEFT && nowPos->x >= bullet.GetPos()->x;
 	//default:
 		return false;
 	}
@@ -56,16 +53,16 @@ bool Enemy::CheckFinded(const Dir playerDir)
 
 void Enemy::Update()
 {
-	Move();
+	Move(dir);
 	//for (auto& i : BulletManager::GetInst()->GetBullets())
 	//{
 	//	if (CheckFeedback(*i))
 	//	{
 	//		life--;
+	//		i->isDead = true;
 	//		if (life <= 0)
 	//		{
 	//			isDead = true;
-	//			i->isDead = true;
 	//			continue;
 	//		}
 	//	}
@@ -74,13 +71,11 @@ void Enemy::Update()
 
 void Enemy::Render()
 {
-	Gotoxy(nowPos->x, nowPos->y);
-	/*if (CheckFinded(Player::dis))
-	{
-		cout << "¢ß";
-	}
-	else
-	{
-		cout << "  ";
-	}*/
+	Gotoxy(m_pos.x, m_pos.y);
+	cout << "¡Ø";
+}
+
+void Enemy::Move(Dir _dir)
+{
+	m_pos = { m_pos.x + moveX, m_pos.y + moveY };
 }
