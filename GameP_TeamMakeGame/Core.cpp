@@ -7,6 +7,7 @@
 #include "Mci.h"
 #include "InputHandler.h"
 #include "ICommand.h"
+#include "EnemyManager.h"
 #include <Windows.h>
 
 Core::Core()
@@ -55,6 +56,7 @@ void Core::Update()
 		delete cmd; // 호출한 core가 delete를 해야 누수가 안남.
 	}
 	ObjectManager::GetInst()->Update();
+	EnemyManager::GetInst()->Update();
 }
 
 
