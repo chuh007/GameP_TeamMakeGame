@@ -4,7 +4,9 @@
 class CharacterObject : public GameObject, public IMovable
 {
 public:
+	using Base = GameObject;
 	CharacterObject(Position _pos = { 0,0 });
+	virtual ~CharacterObject() = default;
 public:
 	virtual void Update() override;
 	virtual void Render() override;

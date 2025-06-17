@@ -91,6 +91,10 @@
     <ClCompile Include="Muzzle.cpp">
       <Filter>03.Object</Filter>
     </ClCompile>
+    <ClCompile Include="FireCommand.cpp">
+      <Filter>07.Moudule\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="IFireable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h">
@@ -150,5 +154,9 @@
     <ClInclude Include="Muzzle.h">
       <Filter>03.Object</Filter>
     </ClInclude>
+    <ClInclude Include="FireCommand.h">
+      <Filter>07.Moudule\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="IFireable.h" />
   </ItemGroup>
 </Project>

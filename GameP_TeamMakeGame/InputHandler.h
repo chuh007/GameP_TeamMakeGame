@@ -5,7 +5,7 @@ class ICommand;
 struct InputKey
 {
 	int vk;
-	Dir dir;
+	Key key;
 };
 class InputHandler
 {

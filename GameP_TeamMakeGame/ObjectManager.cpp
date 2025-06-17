@@ -15,6 +15,7 @@ ObjectManager::~ObjectManager()
 
 void ObjectManager::Update()
 {
+	system("cls");
 	for (int i = 0;i < m_objects.size();++i)
 	{
 		if (m_objects[i]->isDead)

@@ -1,5 +1,4 @@
 #include "CharacterObject.h"
-#include "Console.h"
 CharacterObject::CharacterObject(Position _pos)
 	:GameObject(_pos)
 {
@@ -7,10 +6,11 @@ CharacterObject::CharacterObject(Position _pos)
 
 void CharacterObject::Update()
 {
+	Base::Update();
 }
 
 void CharacterObject::Render()
 {
-	Gotoxy(m_pos.x, m_pos.y);
+	Base::Render();
 }
 
