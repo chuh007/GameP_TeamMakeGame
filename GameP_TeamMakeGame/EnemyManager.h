@@ -1,6 +1,7 @@
 #pragma once
 #include "Enums.h"
 #include "defines.h"
+#include "Position.h"
 
 class EnemyManager
 {
@@ -24,7 +25,6 @@ public:
 private:
 	static EnemyManager* m_inst;
 private:
-	float EnemySpawnTime;
 	float oldTime;
 	float currentTime;
 	int speedMultiply;
