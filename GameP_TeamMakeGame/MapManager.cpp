@@ -49,10 +49,6 @@ MapManager::MapManager()
 
 MapManager::~MapManager()
 {
-	delete[] m_upMap;
-	delete[] m_downMap;
-	delete[] m_leftMap;
-	delete[] m_rightMap;
 }
 
 bool MapManager::CanRanderThisPos(Position _pos)

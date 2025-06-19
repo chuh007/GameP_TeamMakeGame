@@ -96,7 +96,7 @@ void Core::Update()
 		Gotoxy(0, i + 1);
 	}
 	ObjectManager::GetInst()->Update();
-	//EnemyManager::GetInst()->Update();
+	EnemyManager::GetInst()->Update();
 }
 
 
