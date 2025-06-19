@@ -1,7 +1,7 @@
 #pragma once
 enum class Dir
 {
-	UP, DOWN, LEFT, RIGHT
+	UP = 0, DOWN, LEFT, RIGHT
 };
 //enum class Menu
 //{

@@ -1,17 +1,19 @@
 #pragma once
-#include "CharacterObject.h"
+#include "GameObject.h"
 #include "Bullet.h"
-class Enemy : public CharacterObject
+class Enemy : public GameObject
 {
 public:
 	Enemy(Dir myDir, int speed , int lifeSet);
 	~Enemy();
 public:
-	bool CheckFeedback(const Bullet& bullet);
+	bool CheckFeedback(const Bullet& gameObject);
 	bool CheckFinded(const Dir playerDir);
 	virtual void Update() override;
 	virtual void Render() override;
-	virtual void Move(Dir _dir) override;
+private:
+	bool PlayerFeedback();
+	void Move();
 
 protected:
 	Dir dir;
