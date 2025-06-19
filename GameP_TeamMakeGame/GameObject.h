@@ -12,12 +12,14 @@ public:
 	virtual ~GameObject();
 	virtual void Update();
 	virtual void Render();
+	virtual void OnDestroy();
 public:
 	const Position& GetPos() const { return m_pos; }
 public:
 	bool isDead;
 protected:
 	Position m_pos;
+	Position m_beforepos;
 	string m_renderIcon;
 	bool m_isranderable;
 };

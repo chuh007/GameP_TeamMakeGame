@@ -1,13 +1,12 @@
 #pragma once
-#include "CharacterObject.h"
-class Player : public CharacterObject
+#include "GameObject.h"
+class Player : public GameObject
 {
 public:
-	using Base = CharacterObject;
+	using Base = GameObject;
 	Player(Position _pos);
 	void Update() override;
 	void Render() override;
-	void Move(Dir _dir) override;
 
 private:
 

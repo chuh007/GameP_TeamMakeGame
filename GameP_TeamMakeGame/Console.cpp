@@ -35,7 +35,7 @@ void Gotoxy(int _x, int _y)
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	// 2칸이 더 자연스러울 수도 있다.
-	COORD Cur = { _x, _y };
+	COORD Cur = { _x * 2 + GetConsoleResolution().x / 4, _y + 1 };
 
 	SetConsoleCursorPosition(handle, Cur);
 }

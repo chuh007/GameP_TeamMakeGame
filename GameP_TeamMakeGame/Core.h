@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "ICommand.h"
 
+
 class GameObject;
 class InputHandler;
 
@@ -24,4 +25,5 @@ private:
 	GameObject* m_muzzle;
 	InputHandler* m_inputHandler;
 	Position m_resoulution;
+	char m_map[MAP_HEIGHT][MAP_WIDTH];
 };

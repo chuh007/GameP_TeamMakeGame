@@ -142,6 +142,7 @@
     <ClCompile Include="IMovable.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="Mci.cpp" />
     <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="Muzzle.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="IFireable.h" />
     <ClInclude Include="IMovable.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="MapManager.h" />
     <ClInclude Include="Mci.h" />
     <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Muzzle.h" />

@@ -64,12 +64,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>03.Object</Filter>
     </ClCompile>
-    <ClCompile Include="MoveEntity.cpp">
-      <Filter>03.Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Pos.cpp">
-      <Filter>03.Object</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>03.Object</Filter>
     </ClCompile>
@@ -94,7 +88,13 @@
     <ClCompile Include="FireCommand.cpp">
       <Filter>07.Moudule\Command</Filter>
     </ClCompile>
-    <ClCompile Include="IFireable.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="IFireable.cpp">
+      <Filter>03.Object\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h">
@@ -118,16 +118,10 @@
     <ClInclude Include="GameObject.h">
       <Filter>03.Object</Filter>
     </ClInclude>
-    <ClInclude Include="MoveEntity.h">
-      <Filter>03.Object</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>02.Manager</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>03.Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Pos.h">
       <Filter>03.Object</Filter>
     </ClInclude>
     <ClInclude Include="Define.h">
@@ -157,6 +151,14 @@
     <ClInclude Include="FireCommand.h">
       <Filter>07.Moudule\Command</Filter>
     </ClInclude>
-    <ClInclude Include="IFireable.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyData.h" />
+    <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="IFireable.h">
+      <Filter>03.Object\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="MapManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

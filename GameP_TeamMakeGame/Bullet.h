@@ -4,7 +4,7 @@
 class Bullet : public CharacterObject
 {
 public:
-	Bullet(Dir _dir, int _speed , int _lifeTick, int _damage);
+	Bullet(Position _pos, Dir _dir, int _speed , int _lifeTick, int _damage);
 	~Bullet();
 public:
 	virtual void Update() override;

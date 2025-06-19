@@ -2,16 +2,18 @@
 #include "Console.h"
 
 
-Bullet::Bullet(Dir _dir,
-	int _speed, 
+Bullet::Bullet(Position _pos,
+	Dir _dir,
+	int _speed,
 	int _lifeTick,
 	int _damage)
-	: CharacterObject()
+	: CharacterObject(_pos)
 	, m_dir(_dir)
 	, lifetick(_lifeTick)
 	, damage(_damage)
 {
 	m_renderIcon = "*";
+	m_isranderable = true;
 }
 
 Bullet::~Bullet()
@@ -20,7 +22,22 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	switch (m_dir)
+	Base::Update();
+	Move(m_dir);
+	lifetick--;
+	if (lifetick <= 0) isDead = true;
+}
+
+void Bullet::Render()
+{
+	Gotoxy(m_beforepos.x, m_beforepos.y);
+	cout << "  ";
+	Base::Render();
+}
+
+void Bullet::Move(Dir _dir)
+{
+	switch (_dir)
 	{
 	case Dir::UP:
 		--m_pos.y;
@@ -35,17 +52,6 @@ void Bullet::Update()
 		++m_pos.x;
 		break;
 	}
-}
-
-void Bullet::Render()
-{
-	Gotoxy(m_pos.x, m_pos.y);
-	cout << m_renderIcon;
-}
-
-void Bullet::Move(Dir _dir)
-{
-	
 }
 
 void Bullet::GetDamage()

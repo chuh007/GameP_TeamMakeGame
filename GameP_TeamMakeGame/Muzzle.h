@@ -10,6 +10,7 @@ public:
 	void Update() override;
 	void Render() override;
 	void Move(Dir _dir) override;
+	bool CanFire() override;
 	void Fire();
 
 private:
