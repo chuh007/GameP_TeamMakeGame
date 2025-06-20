@@ -5,12 +5,14 @@
 Enemy::Enemy(Dir myDir, int speedMultiply, int lifeMultiply) : GameObject ({ 0, 0 })
 {
 	dir = myDir;
+	oldTime = clock();
+	currentTime = clock();
 	int dirMove = (int)myDir;
-	moveSpeed = MOVE_SPEED * speedMultiply;
 	m_pos = { SPAWN_X[dirMove] , SPAWN_Y[dirMove] };
-	moveX = MOVE_X[dirMove] * moveSpeed;
-	moveY = MOVE_Y[dirMove] * moveSpeed;
+	moveX = MOVE_X[dirMove];
+	moveY = MOVE_Y[dirMove];
 	life = LIFE_INIT * lifeMultiply;
+	m_renderIcon = "¡Ø";
 }
 
 Enemy::~Enemy()
@@ -71,7 +73,12 @@ bool Enemy::CheckFinded(const Dir playerDir)
 
 void Enemy::Update()
 {
-	Move();
+	currentTime = clock();
+	if (currentTime - oldTime >= MOVE_TIME * 1000)
+	{
+		oldTime = currentTime;
+		Move();
+	}
 	if (PlayerFeedback())
 	{
 		isDead = true;
@@ -94,17 +101,13 @@ void Enemy::Update()
 
 void Enemy::Render()
 {
-	//if (CheckFinded())
-	//{
-		Gotoxy(m_pos.x, m_pos.y);
-		SetColor(COLOR::WHITE, COLOR::YELLOW);
-		cout << "¡Ø";
-		SetColor();
+	GameObject::Render();
 	//}
 	
 }
 
 void Enemy::Move()
 {
-	m_pos = { m_pos.x + moveX, m_pos.y + (moveY / 2) };
+	m_pos = { m_pos.x + moveX, m_pos.y + moveY };
 }
+  

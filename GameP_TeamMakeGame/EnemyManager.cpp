@@ -2,7 +2,6 @@
 #include "Enemy.h"
 #include "EnemyData.h"
 #include "Console.h"
-#include <time.h>
 #include <random>
 
 EnemyManager* EnemyManager::m_inst = __nullptr;
@@ -10,16 +9,16 @@ EnemyManager* EnemyManager::m_inst = __nullptr;
 EnemyManager::EnemyManager()
 {
 	srand((unsigned int)time(NULL));
-	oldTime = clock() / CLOCKS_PER_SEC;
-	currentTime = 0;
+	oldTime = clock();
+	currentTime = clock();
 	speedMultiply = 1;
 	lifeMultiply = 1;
 }
 
 void EnemyManager::Update()
 {
-	currentTime = clock() / CLOCKS_PER_SEC;
-	if (currentTime - oldTime >= SPAWN_TIME)
+	currentTime = clock();
+	if (currentTime - oldTime >= SPAWN_TIME * 1000)
 	{
 		oldTime = currentTime;
 		Dir dir = (Dir)(rand() % 4);
