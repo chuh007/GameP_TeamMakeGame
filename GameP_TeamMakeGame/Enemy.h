@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
 #include "Bullet.h"
+#include <Time.h>
+
+
 class Enemy : public GameObject
 {
 public:
@@ -19,6 +22,9 @@ protected:
 	Dir dir;
 	int moveX;
 	int moveY;
-	int moveSpeed;
 	int life;
+
+private:
+	clock_t oldTime;
+	clock_t currentTime;
 };
