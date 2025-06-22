@@ -88,12 +88,17 @@
     <ClCompile Include="FireCommand.cpp">
       <Filter>07.Moudule\Command</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="IFireable.cpp">
       <Filter>03.Object\Interface</Filter>
     </ClCompile>
     <ClCompile Include="MapManager.cpp">
       <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ICollisionable.cpp">
+      <Filter>03.Object\Interface</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,14 +156,21 @@
     <ClInclude Include="FireCommand.h">
       <Filter>07.Moudule\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyData.h" />
-    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="IFireable.h">
       <Filter>03.Object\Interface</Filter>
     </ClInclude>
     <ClInclude Include="MapManager.h">
       <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollisionable.h">
+      <Filter>03.Object\Interface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

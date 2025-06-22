@@ -26,13 +26,7 @@ void ObjectManager::Update()
             continue;
         }
 
-        // ÇÙ½É: ÀÌÀü ÁÂÇ¥ Áö¿ì±â (ÀÜ»ó Á¦°Å)
-        m_objects[i]->OnDestroy();
-
-        // ³í¸® ¾÷µ¥ÀÌÆ®
         m_objects[i]->Update();
-
-        // »õ ÁÂÇ¥ Ãâ·Â
         m_objects[i]->Render();
     }
 }
