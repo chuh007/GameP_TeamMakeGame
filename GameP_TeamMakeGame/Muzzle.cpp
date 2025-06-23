@@ -63,5 +63,5 @@ bool Muzzle::CanFire()
 void Muzzle::Fire()
 {
 	m_curdelay = m_delay;
-	new Bullet(m_pos, m_curDir, 10, 1);
+	new Bullet(m_pos, m_curDir, 10, 100);
 }

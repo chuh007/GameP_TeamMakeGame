@@ -4,7 +4,7 @@ class Player : public GameObject
 {
 public:
 	using Base = GameObject;
-	Player(Position _pos);
+	Player(const Position& _pos);
 	void Update() override;
 	void Render() override;
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Define.h"
+#include "Bullet.h"
 #include <vector>
 
 class Enemy;
@@ -21,7 +22,8 @@ public:
 		SAFE_DELETE(m_inst);
 	}
 	void Add(Enemy* _enemy);
-	void Update();
+	void CheckCollision(Bullet* _bullet);
+	void UpdateEnemyList();
 private:
 	static EnemyCollisionManager* m_inst;
 	std::vector<Enemy*> m_enemys;

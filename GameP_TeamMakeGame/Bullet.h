@@ -4,15 +4,15 @@
 class Bullet : public CharacterObject
 {
 public:
-	Bullet(Position _pos, Dir _dir, int _lifeTick, int _damage);
+	Bullet(const Position& _pos, const Dir& _dir, const int& _lifeTick, const int& _damage);
 	~Bullet();
 public:
 	virtual void Update() override;
 	virtual void Render() override;
 	void Move(Dir _dir) override;
-	void GetDamage();
+	int GetDamage();
 private:
 	Dir m_dir;
-	int lifetick;
-	int damage;
+	int m_lifetick;
+	int m_damage;
 };

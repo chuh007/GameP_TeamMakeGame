@@ -1,10 +1,11 @@
 #include "Enemy.h"
 #include "Console.h"
 #include "EnemyData.h"
+#include "EnemyCollisionManager.h"
 
 Enemy::Enemy(Dir myDir, int speedMultiply, int lifeMultiply) : GameObject ({ 0, 0 })
 {
-	//EnemyCollisionManager::GetInst()->Add(this);
+	EnemyCollisionManager::GetInst()->Add(this);
 	dir = myDir;
 	oldTime = clock();
 	currentTime = clock();
@@ -21,20 +22,13 @@ Enemy::~Enemy()
 
 }
 
-bool Enemy::CheckFeedback(const Bullet& bullet)
+void Enemy::CheckFeedback(const int& _damage)
 {
-	switch (dir)
+	life -= _damage;
+	if (life <= 0)
 	{
-	//case Dir::UP:
-	//	return bullet.dir == Dir::DOWN && nowPos->y <= bullet.GetPos()->y;
-	//case Dir::DOWN:
-	//	return bullet.dir == Dir::UP && nowPos->y >= bullet.GetPos()->y;
-	//case Dir::LEFT:
-	//	return bullet.dir == Dir::RIGHT && nowPos->x <= bullet.GetPos()->x;
-	//case Dir::RIGHT:
-	//	return bullet.dir == Dir::LEFT && nowPos->x >= bullet.GetPos()->x;
-	//default:
-		return false;
+		isDead = true;
+		EnemyCollisionManager::GetInst()->UpdateEnemyList();
 	}
 }
 
@@ -83,6 +77,7 @@ void Enemy::Update()
 	if (PlayerFeedback())
 	{
 		isDead = true;
+		EnemyCollisionManager::GetInst()->UpdateEnemyList();
 		//GameOver
 	}
 	//for (auto& i : BulletManager::GetInst()->GetBullets())
