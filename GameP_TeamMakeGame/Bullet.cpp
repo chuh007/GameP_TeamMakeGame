@@ -4,7 +4,6 @@
 
 Bullet::Bullet(Position _pos,
 	Dir _dir,
-	int _speed,
 	int _lifeTick,
 	int _damage)
 	: CharacterObject(_pos)
@@ -30,8 +29,6 @@ void Bullet::Update()
 
 void Bullet::Render()
 {
-	Gotoxy(m_beforepos.x, m_beforepos.y);
-	cout << "  ";
 	Base::Render();
 }
 

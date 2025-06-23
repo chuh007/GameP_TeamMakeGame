@@ -131,13 +131,13 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CharacterObject.cpp" />
+    <ClCompile Include="EnemyCollisionManager.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="FireCommand.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="ICollisionable.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="IFireable.cpp" />
     <ClCompile Include="IMovable.cpp" />
@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CharacterObject.h" />
+    <ClInclude Include="EnemyCollisionManager.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Define.h" />
@@ -163,7 +164,6 @@
     <ClInclude Include="Enums.h" />
     <ClInclude Include="FireCommand.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="ICollisionable.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IFireable.h" />
     <ClInclude Include="IMovable.h" />
