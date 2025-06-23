@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Console.h"
 
-Player::Player(Position _pos)
+Player::Player(const Position& _pos)
 {
 	m_renderIcon = "¡×";
 	m_pos = _pos;

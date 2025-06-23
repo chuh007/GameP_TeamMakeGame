@@ -1,15 +1,16 @@
 #include "Bullet.h"
 #include "Console.h"
+#include "EnemyCollisionManager.h"
 
 
-Bullet::Bullet(Position _pos,
-	Dir _dir,
-	int _lifeTick,
-	int _damage)
+Bullet::Bullet(const Position& _pos
+	, const Dir& _dir
+	, const int& _lifeTick
+	, const int& _damage)
 	: CharacterObject(_pos)
 	, m_dir(_dir)
-	, lifetick(_lifeTick)
-	, damage(_damage)
+	, m_lifetick(_lifeTick)
+	, m_damage(_damage)
 {
 	m_renderIcon = "*";
 	m_isranderable = true;
@@ -23,8 +24,8 @@ void Bullet::Update()
 {
 	Base::Update();
 	Move(m_dir);
-	lifetick--;
-	if (lifetick <= 0) isDead = true;
+	m_lifetick--;
+	if (m_lifetick <= 0) isDead = true;
 }
 
 void Bullet::Render()
@@ -49,8 +50,10 @@ void Bullet::Move(Dir _dir)
 		++m_pos.x;
 		break;
 	}
+	EnemyCollisionManager::GetInst()->CheckCollision(this);
 }
 
-void Bullet::GetDamage()
+int Bullet::GetDamage()
 {
+	return m_damage;
 }

@@ -19,8 +19,8 @@ public:
 	{
 		SAFE_DELETE(m_inst);
 	}
-	bool CanRanderThisPos(Position);
-	void SetRanderDir(Dir _dir);
+	bool CanRanderThisPos(const Position& _pos);
+	void SetRanderDir(const Dir& _dir);
 private:
 	static MapManager* m_inst;
 	char(*m_curRanderableMap) [MAP_WIDTH];

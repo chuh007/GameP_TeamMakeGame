@@ -49,14 +49,15 @@ MapManager::MapManager()
 
 MapManager::~MapManager()
 {
+	SAFE_DELETE(m_curRanderableMap);
 }
 
-bool MapManager::CanRanderThisPos(Position _pos)
+bool MapManager::CanRanderThisPos(const Position& _pos)
 {
 	return m_curRanderableMap[_pos.y][_pos.x] == '1';
 }
 
-void MapManager::SetRanderDir(Dir _dir)
+void MapManager::SetRanderDir(const Dir& _dir)
 {
 	switch (_dir)
 	{

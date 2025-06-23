@@ -10,7 +10,7 @@ public:
 	Enemy(Dir myDir, int speed , int lifeSet);
 	~Enemy();
 public:
-	bool CheckFeedback(const Bullet& gameObject);
+	void CheckFeedback(const int& _damage);
 	bool CheckFinded(const Dir playerDir);
 	virtual void Update() override;
 	virtual void Render() override;
