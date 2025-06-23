@@ -7,7 +7,7 @@
 #include "Mci.h"
 #include "InputHandler.h"
 #include "ICommand.h"
-#include "EnemyManager.h"
+#include "WaveManager.h"
 #include "MapManager.h"
 #include <Windows.h>
 #include <fstream>
@@ -96,7 +96,7 @@ void Core::Update()
 		Gotoxy(0, i + 1);
 	}
 	ObjectManager::GetInst()->Update();
-	EnemyManager::GetInst()->Update();
+	WaveManager::GetInst()->Update();
 }
 
 
