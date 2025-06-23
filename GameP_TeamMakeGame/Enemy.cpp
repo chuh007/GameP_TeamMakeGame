@@ -4,6 +4,7 @@
 
 Enemy::Enemy(Dir myDir, int speedMultiply, int lifeMultiply) : GameObject ({ 0, 0 })
 {
+	//EnemyCollisionManager::GetInst()->Add(this);
 	dir = myDir;
 	oldTime = clock();
 	currentTime = clock();
