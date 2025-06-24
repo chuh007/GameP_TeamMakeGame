@@ -60,6 +60,7 @@ void TitleManager::Update(Key key, Scene& curScene)
 			}
 			if (eMenu == Menu::QUIT)
 			{
+				system("cls");
 				curScene = Scene::QUIT;
 				return;
 			}

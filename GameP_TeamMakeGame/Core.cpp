@@ -9,6 +9,7 @@
 #include "ICommand.h"
 #include "WaveManager.h"
 #include "MapManager.h"
+#include "TitleManager.h"
 #include <Windows.h>
 #include <fstream>
 
@@ -20,6 +21,7 @@ Core::Core()
 	, m_inputHandler(nullptr)
 	, m_map()
 {
+	ecurScene = Scene::Title;
 	SetConsoleSettings(1000, 650, false, TEXT("GAME"));
 	m_resoulution = GetConsoleResolution();
 	m_player = new Player({ 12, 12 });
@@ -48,7 +50,7 @@ void Core::Run()
 {
 	Init();
 
-	while (true)
+	while (m_isRunning)
 	{
 		Update();
 		FrameSync(60);
@@ -58,7 +60,7 @@ void Core::Run()
 void Core::Init()
 {
 	SetCursorVisual(false, 50);
-	Gotoxy(0, 0);
+	/*Gotoxy(0, 0);
 
 	for (int i = 0;i < MAP_HEIGHT - 1; ++i)
 	{
@@ -71,32 +73,50 @@ void Core::Init()
 			else cout << (m_map[i][j] == '0' ? "бр" : "бс");
 		}
 		Gotoxy(0, i + 1);
-	}
+	}*/
 }
 
 void Core::Update()
 {
-	ICommand* cmd = m_inputHandler->HandleInput();
-	if (cmd)
+	if (ecurScene == Scene::Game)
 	{
-		cmd->Execute(m_muzzle);
-		delete cmd;
-	}
-	Gotoxy(0, 0);
-	for (int i = 0;i < MAP_HEIGHT - 1; ++i)
-	{
-		for (int j = 0; j < MAP_WIDTH - 1; ++j)
+		ICommand* cmd = m_inputHandler->HandleInput();
+		if (cmd)
 		{
-			if (!MapManager::GetInst()
-				->CanRanderThisPos({ j,i }))
-				cout << "  ";
-			else if (m_map[i][j] == '2') cout << "  ";
-			else cout << (m_map[i][j] == '0' ? "бр" : "бс");
+			cmd->Execute(m_muzzle);
+			delete cmd;
 		}
-		Gotoxy(0, i + 1);
+		Gotoxy(0, 0);
+		for (int i = 0; i < MAP_HEIGHT - 1; ++i)
+		{
+			for (int j = 0; j < MAP_WIDTH - 1; ++j)
+			{
+				if (!MapManager::GetInst()
+					->CanRanderThisPos({ j,i }))
+					cout << "  ";
+				else if (m_map[i][j] == '2') cout << "  ";
+				else cout << (m_map[i][j] == '0' ? "бр" : "бс");
+			}
+			Gotoxy(0, i + 1);
+		}
+		ObjectManager::GetInst()->Update();
+		WaveManager::GetInst()->Update();
 	}
-	ObjectManager::GetInst()->Update();
-	WaveManager::GetInst()->Update();
+	else if (ecurScene != Scene::QUIT)
+	{
+		Key input = m_inputHandler->TitleInput();
+		if (input != Key::NONE)
+		{
+			TitleManager::GetInst()->Update(input, ecurScene);
+		}
+		else if (ecurScene == Scene::Title)
+		{
+			TitleManager::GetInst()->RenderTitle();
+		}
+	}
+	else
+	{
+		m_isRunning = false;
+	}
 }
-
 

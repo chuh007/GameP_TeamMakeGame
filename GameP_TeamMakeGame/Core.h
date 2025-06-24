@@ -4,6 +4,7 @@
 #include "Define.h"
 #include "GameObject.h"
 #include "ICommand.h"
+#include "Enums.h"
 
 
 class GameObject;
@@ -20,6 +21,7 @@ private:
 	void Init();
 	void Update();
 private:
+	Scene ecurScene;
 	bool m_isRunning;
 	GameObject* m_player;
 	GameObject* m_muzzle;
