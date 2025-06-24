@@ -3,7 +3,7 @@
 #include "EnemyData.h"
 #include "EnemyCollisionManager.h"
 
-Enemy::Enemy(Dir myDir, int speedMultiply, int lifeMultiply) : GameObject ({ 0, 0 })
+Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : GameObject ({ 0, 0 })
 {
 	EnemyCollisionManager::GetInst()->Add(this);
 	dir = myDir;
@@ -13,13 +13,9 @@ Enemy::Enemy(Dir myDir, int speedMultiply, int lifeMultiply) : GameObject ({ 0, 
 	m_pos = { SPAWN_X[dirMove] , SPAWN_Y[dirMove] };
 	moveX = MOVE_X[dirMove];
 	moveY = MOVE_Y[dirMove];
+	time = MOVE_TIME * 1000 * timeMultiply;
 	life = LIFE_INIT * lifeMultiply;
 	m_renderIcon = "¡Ø";
-}
-
-Enemy::~Enemy()
-{
-
 }
 
 void Enemy::CheckFeedback(const int& _damage)
@@ -69,7 +65,7 @@ bool Enemy::CheckFinded(const Dir playerDir)
 void Enemy::Update()
 {
 	currentTime = clock();
-	if (currentTime - oldTime >= MOVE_TIME * 1000)
+	if (currentTime - oldTime >= time)
 	{
 		oldTime = currentTime;
 		Move();

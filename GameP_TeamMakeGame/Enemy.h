@@ -7,14 +7,13 @@
 class Enemy : public GameObject
 {
 public:
-	Enemy(Dir myDir, int speed , int lifeSet);
-	~Enemy();
+	Enemy(Dir myDir, float speed , int lifeSet);
 public:
 	void CheckFeedback(const int& _damage);
 	bool CheckFinded(const Dir playerDir);
 	virtual void Update() override;
 	virtual void Render() override;
-private:
+protected:
 	bool PlayerFeedback();
 	void Move();
 
@@ -23,8 +22,7 @@ protected:
 	int moveX;
 	int moveY;
 	int life;
-
-private:
 	clock_t oldTime;
 	clock_t currentTime;
+	float time;
 };

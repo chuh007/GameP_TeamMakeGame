@@ -21,7 +21,7 @@ public:
 	}
 public:
 	void Update();
-	void SetEnemySpeedMultiply(int SpeedMultiply) { speedMultiply = SpeedMultiply; }
+	void SetEnemySpeedMultiply(int SpeedMultiply) { timeMultiply = SpeedMultiply; }
 	void SetEnemyLifeMultiply(int LifeMultiply) { lifeMultiply = LifeMultiply; }
 	float GetCurrntTime() { return currentTime; }
 private:
@@ -29,6 +29,6 @@ private:
 private:
 	clock_t oldTime;
 	clock_t currentTime;
-	int speedMultiply;
+	int timeMultiply;
 	int lifeMultiply;
 };
