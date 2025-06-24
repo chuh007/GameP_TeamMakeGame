@@ -23,6 +23,7 @@ public:
 	void Update();
 	void SetEnemySpeedMultiply(int SpeedMultiply) { timeMultiply = SpeedMultiply; }
 	void SetEnemyLifeMultiply(int LifeMultiply) { lifeMultiply = LifeMultiply; }
+	void WaveToEnemySet(int Wave);
 	float GetCurrntTime() { return currentTime; }
 private:
 	static EnemyManager* m_inst;
@@ -31,4 +32,9 @@ private:
 	clock_t currentTime;
 	int timeMultiply;
 	int lifeMultiply;
+
+private:
+	int FasterPer;
+	int FlipPer;
+	int InvisiblePer;
 };

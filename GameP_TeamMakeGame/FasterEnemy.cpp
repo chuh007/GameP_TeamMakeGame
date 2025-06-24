@@ -43,7 +43,7 @@ void FasterEnemy::Render()
 	{
 		SetColor(COLOR::RED);
 		Gotoxy(SPAWN_X[dirMove], SPAWN_Y[dirMove]);
-		cout << "!";
+		cout << "ขอ";
 		SetColor();
 	}
 }

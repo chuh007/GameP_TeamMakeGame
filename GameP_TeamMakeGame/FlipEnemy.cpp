@@ -24,6 +24,10 @@ void FlipEnemy::Render()
 		Gotoxy(flipPos.x, flipPos.y);
 		cout << m_renderIcon;
 	}
+	//Gotoxy(m_pos.x, m_pos.y);
+	//SetColor(COLOR::WHITE, COLOR::BLUE);
+	//cout << " ";
+	//SetColor();
 }
 
 void FlipEnemy::FlipNowPos()

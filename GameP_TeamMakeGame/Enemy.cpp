@@ -18,6 +18,34 @@ Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : GameObject ({ 0,
 	m_renderIcon = "¡Ø";
 }
 
+Enemy::~Enemy()
+{
+	const int BLINK_COUNT = 2;
+	const double BLINK_INTERVAL = 0.05;
+
+	clock_t blinkStart = clock();
+	bool isViolet = true;
+	int blinkTimes = 0;
+
+	while (blinkTimes < BLINK_COUNT * 2)
+	{
+		double blinkTimer = (clock() - blinkStart) / (double)CLOCKS_PER_SEC;
+
+		if (blinkTimer >= BLINK_INTERVAL)
+		{
+			Gotoxy(m_pos.x, m_pos.y);
+			SetColor(isViolet ? COLOR::LIGHT_VIOLET : COLOR::WHITE);
+			cout << m_renderIcon;
+
+			blinkStart = clock();
+			isViolet = !isViolet;
+			blinkTimes++;
+		}
+	}
+
+	SetColor();
+}
+
 void Enemy::CheckFeedback(const int& _damage)
 {
 	life -= _damage;
