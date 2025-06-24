@@ -5,7 +5,7 @@ enum class Dir
 };
 enum class Menu
 {
-	START, INFO, QUIT, FAIL
+	START = 0, INFO, QUIT, FAIL
 };
 enum class Scene
 {
@@ -13,5 +13,5 @@ enum class Scene
 };
 enum class Key
 {
-	UP, DOWN, LEFT, RIGHT, SPACE
+	UP, DOWN, LEFT, RIGHT, SPACE , ESC , NONE
 };

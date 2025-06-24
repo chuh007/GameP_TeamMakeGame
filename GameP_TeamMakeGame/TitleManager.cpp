@@ -1,26 +1,93 @@
 ﻿#include<io.h>
+#include<Windows.h>
 #include "TitleManager.h"
 #include "Console.h"
-#include "Position.h"
 
 TitleManager* TitleManager::m_inst = __nullptr;
 
 TitleManager::TitleManager()
 	:eMenu(Menu::FAIL)
 {
+	resolution = { 0,0 };
 	eMenu = Menu::START;
+	resolution = GetConsoleResolution();
 }
 
-void TitleManager::Update(Key key)
+void TitleManager::Update(Key key, Scene& curScene)
 {
-	
+	if (curScene == Scene::Title)
+	{
+		int x = resolution.x / 2.5f;
+		int y = resolution.y / 3 * 2;
+		
+		int nowMenu = (int)eMenu;
 
-	Render();
+
+		switch (key)
+		{
+		case Key::UP:
+			nowMenu--;
+			if (0 <= nowMenu && nowMenu <= 2)
+			{
+				IsGotoxy(x - 1, y + (int)eMenu);
+				cout << " ";
+				eMenu = (Menu)nowMenu;
+				Sleep(75);
+			}
+			break;
+		case Key::DOWN:
+			nowMenu++;
+			if (0 <= nowMenu && nowMenu <= 2)
+			{
+				IsGotoxy(x - 1, y + (int)eMenu);
+				cout << " ";
+				eMenu = (Menu)nowMenu;
+				Sleep(75);
+			}
+			break;
+		case Key::SPACE:
+			if (eMenu == Menu::START)
+			{
+				system("cls");
+				curScene = Scene::Game;
+				return;
+			}
+			if (eMenu == Menu::INFO)
+			{
+				system("cls");
+				curScene = Scene::INFO;
+				return;
+			}
+			if (eMenu == Menu::QUIT)
+			{
+				curScene = Scene::QUIT;
+				return;
+			}
+			break;
+		}
+		RenderTitle();
+	}
+	if (curScene == Scene::INFO)
+	{
+		system("cls");
+		if (key == Key::ESC)
+		{
+			curScene = Scene::Title;
+			return;
+		}
+		RenderInfo();
+	}
+
 }
 
-void TitleManager::Render()
+void TitleManager::RenderInfo()
 {
-	Position resolution = GetConsoleResolution();
+	cout << "WASD를 통하여서 보는 방향 변경 \n 스페이스바로 총알 발사";
+}
+
+
+void TitleManager::RenderTitle()
+{
 	int y = resolution.y / 3;
 	IsGotoxy(0, y);
 	int coutMode = _setmode(_fileno(stdout), _O_U16TEXT);

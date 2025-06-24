@@ -1,8 +1,8 @@
 #pragma once
 #include"Enums.h"
 #include "Define.h"
-#include "ICommand.h"
-#include <vector>
+#include "Position.h"
+
 
 class TitleManager
 {
@@ -22,13 +22,14 @@ public:
 	}
 private:
 	static TitleManager* m_inst;
-
 public:
-	void Update(Key key);
+	void Update(Key key , Scene& curScene);
 	Menu GetTitleState() { return eMenu; }
-private:
-	void Render();
+public:
+	void RenderTitle();
+	void RenderInfo();
 private:
 	Menu eMenu;
+	Position resolution;
 };
 

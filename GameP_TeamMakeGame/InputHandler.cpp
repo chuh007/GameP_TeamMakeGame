@@ -10,6 +10,22 @@ InputHandler::InputHandler()
 	m_vecKeys.push_back({ 'A', Key::LEFT });
 	m_vecKeys.push_back({ 'D', Key::RIGHT });
 	m_vecKeys.push_back({ VK_SPACE, Key::SPACE });
+	m_vecKeys.push_back({ VK_ESCAPE, Key::ESC });
+}
+
+Key InputHandler::TitleInput()
+{
+	for (auto& key : m_vecKeys)
+	{
+		bool isDown = (GetAsyncKeyState(key.vk) & 0x8000) != 0;
+		if (isDown)
+		{
+			if(key.key != Key::LEFT && key.key != Key::RIGHT)
+				return key.key;
+		}
+	}
+	Sleep(30);
+	return Key::NONE;
 }
 
 ICommand* InputHandler::HandleInput()
