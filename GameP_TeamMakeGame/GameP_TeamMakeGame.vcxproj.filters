@@ -100,10 +100,6 @@
     <ClCompile Include="EnemyCollisionManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
-    <ClCompile Include="FasterEnemy.cpp" />
-    <ClCompile Include="FlipEnemy.cpp" />
-    <ClCompile Include="InvisibleEnemy.cpp" />
-    <ClCompile Include="UpgradeCommand.cpp" />
     <ClCompile Include="TitleManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
@@ -115,6 +111,18 @@
     </ClCompile>
     <ClCompile Include="WaveManager.cpp">
       <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeCommand.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FasterEnemy.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FlipEnemy.cpp">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="InvisibleEnemy.cpp">
+      <Filter>03.Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,10 +196,6 @@
     <ClInclude Include="EnemyCollisionManager.h">
       <Filter>02.Manager</Filter>
     </ClInclude>
-    <ClInclude Include="FasterEnemy.h" />
-    <ClInclude Include="FlipEnemy.h" />
-    <ClInclude Include="InvisibleEnemy.h" />
-    <ClInclude Include="UpgradeCommand.h" />
     <ClInclude Include="TitleManager.h">
       <Filter>02.Manager</Filter>
     </ClInclude>
@@ -203,6 +207,18 @@
     </ClInclude>
     <ClInclude Include="UpgradeManager.h">
       <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeCommand.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="FasterEnemy.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FlipEnemy.h">
+      <Filter>03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="InvisibleEnemy.h">
+      <Filter>03.Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
