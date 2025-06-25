@@ -15,10 +15,11 @@ EnemyManager::EnemyManager()
 	oldTime = clock();
 	currentTime = clock();
 	timeMultiply = 1;
-	lifeMultiply = 2;
+	lifePer = 1;
 	FasterPer = 0;
 	InvisiblePer = 0;
 	FlipPer = 0;
+	WaveToEnemySet(20);
 }
 
 void EnemyManager::Update()
@@ -35,28 +36,33 @@ void EnemyManager::Update()
 		}
 		else if (randnum <= FasterPer + InvisiblePer)
 		{
-			new InvisibleEnemy(dir, timeMultiply * 5, 2);
+			new InvisibleEnemy(dir, timeMultiply * 5, SetHp(10, lifePer));
 		}
-		else if(randnum <= FasterPer + InvisiblePer)
+		else if(randnum <= FasterPer + InvisiblePer + FlipPer)
 		{
-			new FlipEnemy(dir, timeMultiply, 2);
+			new FlipEnemy(dir, timeMultiply, SetHp(10, lifePer));
 		}
 		else
 		{
-			new Enemy(dir, timeMultiply, 1 * lifeMultiply);
+			new Enemy(dir, timeMultiply, SetHp(10 , lifePer));
 		}
 
 	}
 }
 
+int EnemyManager::SetHp(int baseHp, float hpPer)
+{
+	return (int)(baseHp * hpPer);
+}
+
 void EnemyManager::WaveToEnemySet(int Wave)
 {
+	lifePer = max(1.0f, pow(1.15f, Wave / 5));
 	if (Wave >= 20)
 	{
 		FasterPer = 20;
 		FlipPer = 10;
 		InvisiblePer = 5;
-		lifeMultiply = 4;
 	}
 	else if (Wave >= 15)
 	{
@@ -68,7 +74,6 @@ void EnemyManager::WaveToEnemySet(int Wave)
 	{
 		FlipPer = 5;
 		FasterPer = 12;
-		lifeMultiply = 3;
 	}
 	else if (Wave >= 5)
 	{

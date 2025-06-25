@@ -22,16 +22,17 @@ public:
 public:
 	void Update();
 	void SetEnemySpeedMultiply(int SpeedMultiply) { timeMultiply = SpeedMultiply; }
-	void SetEnemyLifeMultiply(int LifeMultiply) { lifeMultiply = LifeMultiply; }
+	void SetEnemyLifeMultiply(int LifeMultiply) { lifePer = LifeMultiply; }
 	void WaveToEnemySet(int Wave);
 	float GetCurrntTime() { return currentTime; }
+	int SetHp(int baseHp, float hpPer);
 private:
 	static EnemyManager* m_inst;
 private:
 	clock_t oldTime;
 	clock_t currentTime;
 	int timeMultiply;
-	int lifeMultiply;
+	float lifePer;
 
 private:
 	int FasterPer;
