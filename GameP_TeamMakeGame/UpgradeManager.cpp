@@ -40,6 +40,11 @@ bool UpgradeManager::GetBarrier()
 	return m_isbarrier;
 }
 
+void UpgradeManager::OffBarrier()
+{
+	m_isbarrier = false;
+}
+
 int UpgradeManager::GetFireDelay()
 {
 	return m_firedelay;

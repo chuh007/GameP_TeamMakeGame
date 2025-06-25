@@ -24,6 +24,7 @@ public:
 	void Upgrade(Key _key);
 public:
 	bool GetBarrier();
+	void OffBarrier();
 	int GetFireDelay();
 	int GetDamage();
 	void PlusUpgradeCount();

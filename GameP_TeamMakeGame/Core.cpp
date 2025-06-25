@@ -7,7 +7,7 @@
 #include "Mci.h"
 #include "InputHandler.h"
 #include "ICommand.h"
-#include "WaveManager.h"
+#include "GameManager.h"
 #include "MapManager.h"
 #include "TitleManager.h"
 #include <Windows.h>
@@ -86,7 +86,7 @@ void Core::Update()
 			Gotoxy(0, i + 1);
 		}
 		ObjectManager::GetInst()->Update();
-		WaveManager::GetInst()->Update();
+		GameManager::GetInst()->Update();
 	}
 	else if (ecurScene != Scene::QUIT)
 	{

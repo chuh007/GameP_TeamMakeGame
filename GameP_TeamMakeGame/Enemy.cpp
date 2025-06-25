@@ -2,6 +2,7 @@
 #include "Console.h"
 #include "EnemyData.h"
 #include "EnemyCollisionManager.h"
+#include "GameManager.h"
 
 Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : GameObject ({ 0, 0 })
 {
@@ -103,7 +104,7 @@ void Enemy::Update()
 	{
 		isDead = true;
 		EnemyCollisionManager::GetInst()->UpdateEnemyList();
-		//GameOver
+		GameManager::GetInst()->CheckGameOver();
 	}
 	//for (auto& i : BulletManager::GetInst()->GetBullets())
 	//{

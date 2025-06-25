@@ -1,25 +1,27 @@
 #pragma once
 #include "Define.h"
+#include "Player.h"
 #include <time.h>
-class WaveManager
+class GameManager
 {
 private:
-	WaveManager();
-	~WaveManager();
+	GameManager();
+	~GameManager();
 public:
 	void Update();
-	static WaveManager* GetInst()
+	static GameManager* GetInst()
 	{
 		if (m_inst == nullptr)
-			m_inst = new WaveManager;
+			m_inst = new GameManager;
 		return m_inst;
 	}
 	static void DestoryInst()
 	{
 		SAFE_DELETE(m_inst);
 	}
+	void CheckGameOver();
 private:
-	static WaveManager* m_inst;
+	static GameManager* m_inst;
 	bool m_isBattleMode;
 	int m_waveCnt;
 	clock_t m_oldTime;

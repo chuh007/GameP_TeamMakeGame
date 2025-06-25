@@ -157,7 +157,7 @@
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="UpgradeCommand.cpp" />
     <ClCompile Include="UpgradeManager.cpp" />
-    <ClCompile Include="WaveManager.cpp" />
+    <ClCompile Include="GameManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
@@ -191,7 +191,7 @@
     <ClInclude Include="UIManager.h" />
     <ClInclude Include="UpgradeCommand.h" />
     <ClInclude Include="UpgradeManager.h" />
-    <ClInclude Include="WaveManager.h" />
+    <ClInclude Include="GameManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
