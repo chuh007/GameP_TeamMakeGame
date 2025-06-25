@@ -32,7 +32,7 @@ void Enemy::CheckFeedback(const int& _damage)
 void Enemy::Hit()
 {
 	const int BLINK_COUNT = 2;
-	const double BLINK_INTERVAL = 0.05;
+	const float BLINK_INTERVAL = 0.05f;
 
 	clock_t blinkStart = clock();
 	bool isBlink = true;
@@ -40,7 +40,7 @@ void Enemy::Hit()
 
 	while (blinkTimes < BLINK_COUNT * 2)
 	{
-		double blinkTimer = (clock() - blinkStart) / (double)CLOCKS_PER_SEC;
+		float blinkTimer = (clock() - blinkStart) / (float)CLOCKS_PER_SEC;
 
 		if (blinkTimer >= BLINK_INTERVAL)
 		{
@@ -60,7 +60,7 @@ void Enemy::Hit()
 void Enemy::DeadBlink()
 {
 	const int BLINK_COUNT = 10;
-	const double BLINK_INTERVAL = 0.1;
+	const float BLINK_INTERVAL = 0.1f;
 
 	clock_t blinkStart = clock();
 	bool isBlink = true;
@@ -68,7 +68,7 @@ void Enemy::DeadBlink()
 
 	while (blinkTimes < BLINK_COUNT * 2)
 	{
-		double blinkTimer = (clock() - blinkStart) / (double)CLOCKS_PER_SEC;
+		float blinkTimer = (clock() - blinkStart) / (float)CLOCKS_PER_SEC;
 
 		if (blinkTimer >= BLINK_INTERVAL)
 		{
