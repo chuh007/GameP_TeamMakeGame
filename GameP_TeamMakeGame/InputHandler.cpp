@@ -2,6 +2,7 @@
 #include "InputHandler.h"
 #include "MoveCommand.h"
 #include "FireCommand.h"
+#include "UpgradeCommand.h"
 
 InputHandler::InputHandler()
 {
@@ -11,6 +12,9 @@ InputHandler::InputHandler()
 	m_vecKeys.push_back({ 'D', Key::RIGHT });
 	m_vecKeys.push_back({ VK_SPACE, Key::SPACE });
 	m_vecKeys.push_back({ VK_ESCAPE, Key::ESC });
+	m_vecKeys.push_back({ '1', Key::UPGRADE1 });
+	m_vecKeys.push_back({ '2', Key::UPGRADE2 });
+	m_vecKeys.push_back({ '3', Key::UPGRADE3 });
 }
 
 Key InputHandler::TitleInput()
@@ -38,8 +42,11 @@ ICommand* InputHandler::HandleInput()
 			if (key.key < Key::SPACE)
 				return new MoveCommand
 				((Dir)key.key);
-			else
+			else if (key.key < Key::UPGRADE1)
 				return new FireCommand
+				(key.key);
+			else
+				return new UpgradeCommand
 				(key.key);
 		}
 

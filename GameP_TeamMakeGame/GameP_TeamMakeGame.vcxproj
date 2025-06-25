@@ -155,6 +155,8 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="TitleManager.cpp" />
     <ClCompile Include="UIManager.cpp" />
+    <ClCompile Include="UpgradeCommand.cpp" />
+    <ClCompile Include="UpgradeManager.cpp" />
     <ClCompile Include="WaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +189,8 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="TitleManager.h" />
     <ClInclude Include="UIManager.h" />
+    <ClInclude Include="UpgradeCommand.h" />
+    <ClInclude Include="UpgradeManager.h" />
     <ClInclude Include="WaveManager.h" />
   </ItemGroup>
   <ItemGroup>

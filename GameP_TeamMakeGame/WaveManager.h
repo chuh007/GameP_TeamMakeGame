@@ -21,6 +21,7 @@ public:
 private:
 	static WaveManager* m_inst;
 	bool m_isBattleMode;
+	int m_waveCnt;
 	clock_t m_oldTime;
 	clock_t m_currentTime;
 };

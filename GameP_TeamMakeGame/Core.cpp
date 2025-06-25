@@ -60,20 +60,6 @@ void Core::Run()
 void Core::Init()
 {
 	SetCursorVisual(false, 50);
-	/*Gotoxy(0, 0);
-
-	for (int i = 0;i < MAP_HEIGHT - 1; ++i)
-	{
-		for (int j = 0; j < MAP_WIDTH - 1; ++j)
-		{
-			if (!MapManager::GetInst()
-				->CanRanderThisPos({ j,i }))
-				cout << "  ";
-			else if (m_map[i][j] == '2') cout << "  ";
-			else cout << (m_map[i][j] == '0' ? "бр" : "бс");
-		}
-		Gotoxy(0, i + 1);
-	}*/
 }
 
 void Core::Update()

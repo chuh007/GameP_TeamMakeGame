@@ -13,5 +13,9 @@ enum class Scene
 };
 enum class Key
 {
-	UP, DOWN, LEFT, RIGHT, SPACE , ESC , NONE
+	UP, DOWN, LEFT, RIGHT, SPACE, UPGRADE1, UPGRADE2, UPGRADE3, ESC , NONE
+};
+enum class UIType
+{
+	WAVECNT, MODETXT, CHOICE1, CHOICE2, CHOICE3
 };

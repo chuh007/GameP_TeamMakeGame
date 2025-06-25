@@ -2,10 +2,14 @@
 #include "Console.h"
 #include "Bullet.h"
 #include "MapManager.h"
+#include "UpgradeManager.h"
+#include "UIManager.h"
 
 Muzzle::Muzzle(Position _pos)
-	:m_curDir(Dir::UP)
+	: m_curDir(Dir::UP)
 	, m_playerPos(_pos)
+	, m_fireCount(0)
+	, m_damage(10)
 {
 	m_renderIcon = "бу";
 	m_pos = { _pos.x , _pos.y - 1 };
@@ -63,5 +67,27 @@ bool Muzzle::CanFire()
 void Muzzle::Fire()
 {
 	m_curdelay = m_delay;
-	new Bullet(m_pos, m_curDir, 10, 100);
+	m_fireCount++;
+	new Bullet(m_pos, m_curDir, 10, m_damage);
+}
+
+int Muzzle::GetFireCount()
+{
+	return m_fireCount;
+}
+
+void Muzzle::Upgrade(Key _key)
+{
+	if (UpgradeManager::GetInst()->CanUpgrade())
+	{
+		UpgradeManager::GetInst()->Upgrade(_key);
+		m_damage = UpgradeManager::GetInst()->GetDamage();
+		m_delay = UpgradeManager::GetInst()->GetFireDelay();
+	}
+	UIManager::GetInst()
+		->UpdateUI(UIType::CHOICE1, "                ");
+	UIManager::GetInst()
+		->UpdateUI(UIType::CHOICE2, "                ");
+	UIManager::GetInst()
+		->UpdateUI(UIType::CHOICE3, "                ");
 }
