@@ -18,7 +18,18 @@ Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : GameObject ({ 0,
 	m_renderIcon = "¡Ø";
 }
 
-Enemy::~Enemy()
+void Enemy::CheckFeedback(const int& _damage)
+{
+	life -= _damage;
+	Hit();
+	if (life <= 0)
+	{
+		isDead = true;
+		EnemyCollisionManager::GetInst()->UpdateEnemyList();
+	}
+}
+
+void Enemy::Hit()
 {
 	const int BLINK_COUNT = 2;
 	const double BLINK_INTERVAL = 0.05;
@@ -44,16 +55,6 @@ Enemy::~Enemy()
 	}
 
 	SetColor();
-}
-
-void Enemy::CheckFeedback(const int& _damage)
-{
-	life -= _damage;
-	if (life <= 0)
-	{
-		isDead = true;
-		EnemyCollisionManager::GetInst()->UpdateEnemyList();
-	}
 }
 
 bool Enemy::PlayerFeedback()

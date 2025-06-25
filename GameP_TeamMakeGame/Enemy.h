@@ -8,7 +8,6 @@ class Enemy : public GameObject
 {
 public:
 	Enemy(Dir myDir, float speed , int lifeSet);
-	~Enemy();
 public:
 	void CheckFeedback(const int& _damage);
 	bool CheckFinded(const Dir playerDir);
@@ -17,7 +16,7 @@ public:
 protected:
 	bool PlayerFeedback();
 	void Move();
-
+	void Hit();
 protected:
 	Dir dir;
 	int moveX;
