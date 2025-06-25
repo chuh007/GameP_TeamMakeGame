@@ -19,7 +19,6 @@ EnemyManager::EnemyManager()
 	FasterPer = 0;
 	InvisiblePer = 0;
 	FlipPer = 0;
-	WaveToEnemySet(20);
 }
 
 void EnemyManager::Update()
