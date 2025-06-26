@@ -2,6 +2,7 @@
 #include "Console.h"
 #include "EnemyData.h"
 #include "EnemyCollisionManager.h"
+#include "GameManager.h"
 
 Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : GameObject ({ 0, 0 })
 {
@@ -32,52 +33,24 @@ void Enemy::CheckFeedback(const int& _damage)
 void Enemy::Hit()
 {
 	const int BLINK_COUNT = 2;
-	const float BLINK_INTERVAL = 0.05f;
+	const double BLINK_INTERVAL = 0.05;
 
 	clock_t blinkStart = clock();
-	bool isBlink = true;
+	bool isViolet = true;
 	int blinkTimes = 0;
 
 	while (blinkTimes < BLINK_COUNT * 2)
 	{
-		float blinkTimer = (clock() - blinkStart) / (float)CLOCKS_PER_SEC;
+		double blinkTimer = (clock() - blinkStart) / (double)CLOCKS_PER_SEC;
 
 		if (blinkTimer >= BLINK_INTERVAL)
 		{
 			Gotoxy(m_pos.x, m_pos.y);
-			SetColor(isBlink ? COLOR::LIGHT_VIOLET : COLOR::WHITE);
+			SetColor(isViolet ? COLOR::LIGHT_VIOLET : COLOR::WHITE);
 			cout << m_renderIcon;
 
 			blinkStart = clock();
-			isBlink = !isBlink;
-			blinkTimes++;
-		}
-	}
-
-	SetColor();
-}
-
-void Enemy::DeadBlink()
-{
-	const int BLINK_COUNT = 10;
-	const float BLINK_INTERVAL = 0.1f;
-
-	clock_t blinkStart = clock();
-	bool isBlink = true;
-	int blinkTimes = 0;
-
-	while (blinkTimes < BLINK_COUNT * 2)
-	{
-		float blinkTimer = (clock() - blinkStart) / (float)CLOCKS_PER_SEC;
-
-		if (blinkTimer >= BLINK_INTERVAL)
-		{
-			Gotoxy(m_pos.x, m_pos.y);
-			SetColor(isBlink ? COLOR::GRAY : COLOR::WHITE);
-			cout << m_renderIcon;
-
-			blinkStart = clock();
-			isBlink = !isBlink;
+			isViolet = !isViolet;
 			blinkTimes++;
 		}
 	}
@@ -129,10 +102,9 @@ void Enemy::Update()
 	}
 	if (PlayerFeedback())
 	{
-		EnemyCollisionManager::GetInst()->UpdateEnemyList();
-		DeadBlink();
 		isDead = true;
-		//GameOver
+		EnemyCollisionManager::GetInst()->UpdateEnemyList();
+		GameManager::GetInst()->CheckGameOver();
 	}
 	//for (auto& i : BulletManager::GetInst()->GetBullets())
 	//{

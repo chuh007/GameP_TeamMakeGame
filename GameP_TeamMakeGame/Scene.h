@@ -2,6 +2,7 @@
 class Scene
 {
 public:
-	void Update();
+	virtual void Init() abstract;
+	virtual void Update() abstract;
 };
 

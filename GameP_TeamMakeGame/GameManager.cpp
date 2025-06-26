@@ -1,10 +1,10 @@
-#include "WaveManager.h"
+#include "GameManager.h"
 #include "EnemyManager.h"
 #include "UpgradeManager.h"
 #include "MapManager.h"
 #include "UIManager.h"
-WaveManager* WaveManager::m_inst = nullptr;
-WaveManager::WaveManager()
+GameManager* GameManager::m_inst = nullptr;
+GameManager::GameManager()
 	:m_isBattleMode(true)
 	,m_oldTime(clock())
 	,m_currentTime(clock())
@@ -15,12 +15,12 @@ WaveManager::WaveManager()
 			std::to_string(m_waveCnt));
 }
 
-WaveManager::~WaveManager()
+GameManager::~GameManager()
 {
 
 }
 
-void WaveManager::Update()
+void GameManager::Update()
 {
 	m_currentTime = clock();
 	float time = float(m_currentTime - m_oldTime) / CLOCKS_PER_SEC;
@@ -61,4 +61,17 @@ void WaveManager::Update()
 	}
 	if(m_isBattleMode)
 		EnemyManager::GetInst()->Update();
+}
+
+
+void GameManager::CheckGameOver()
+{
+	if (UpgradeManager::GetInst()->GetBarrier())
+	{
+		UpgradeManager::GetInst()->OffBarrier();
+	}
+	else
+	{
+		// 게임오버 씬으로 가는 작업
+	}
 }

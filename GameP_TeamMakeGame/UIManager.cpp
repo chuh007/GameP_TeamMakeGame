@@ -1,5 +1,5 @@
-#include "Console.h"
 #include "UIManager.h"
+#include "Console.h"
 UIManager* UIManager::m_inst = nullptr;
 
 UIManager::UIManager()
