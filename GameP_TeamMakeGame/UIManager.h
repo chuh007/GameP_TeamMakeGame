@@ -22,6 +22,7 @@ public:
 	}
 	void UpdateUI(const UIType& _type,
 		const std::string& _str);
+	void Init();
 private:
 	static UIManager* m_inst;
 	Position m_waveCntPos;

@@ -146,7 +146,7 @@ MapManager::MapManager()
 
 MapManager::~MapManager()
 {
-	SAFE_DELETE(m_curRanderableMap);
+	//SAFE_DELETE(m_curRanderableMap);
 }
 
 bool MapManager::CanRanderThisPos(const Position& _pos)
