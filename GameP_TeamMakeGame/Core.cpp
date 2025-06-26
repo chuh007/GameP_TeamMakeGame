@@ -51,6 +51,7 @@ void Core::Run()
 void Core::Init()
 {
 	SetCursorVisual(false, 50);
+	SetLockResize();
 }
 
 void Core::Update()
