@@ -33,7 +33,7 @@ void Enemy::CheckFeedback(const int& _damage)
 void Enemy::Hit()
 {
 	const int BLINK_COUNT = 2;
-	const double BLINK_INTERVAL = 0.05;
+	const float BLINK_INTERVAL = 0.05;
 
 	clock_t blinkStart = clock();
 	bool isViolet = true;
@@ -41,7 +41,7 @@ void Enemy::Hit()
 
 	while (blinkTimes < BLINK_COUNT * 2)
 	{
-		double blinkTimer = (clock() - blinkStart) / (double)CLOCKS_PER_SEC;
+		float blinkTimer = (clock() - blinkStart) / (float)CLOCKS_PER_SEC;
 
 		if (blinkTimer >= BLINK_INTERVAL)
 		{
@@ -104,6 +104,7 @@ void Enemy::Update()
 	{
 		isDead = true;
 		EnemyCollisionManager::GetInst()->UpdateEnemyList();
+		DeadBlink();
 		GameManager::GetInst()->CheckGameOver();
 	}
 	//for (auto& i : BulletManager::GetInst()->GetBullets())
@@ -119,6 +120,32 @@ void Enemy::Update()
 	//		}
 	//	}
 	//}
+}
+
+void Enemy::DeadBlink()
+{
+	const int BLINK_COUNT = 10;
+	const double BLINK_INTERVAL = 0.1;
+
+	clock_t blinkStart = clock();
+	bool isBlink = true;
+	int blinkTimes = 0;
+
+	while (blinkTimes < BLINK_COUNT * 2)
+	{
+		double blinkTimer = (clock() - blinkStart) / (double)CLOCKS_PER_SEC;
+
+		if (blinkTimer >= BLINK_INTERVAL)
+		{
+			Gotoxy(m_pos.x, m_pos.y);
+			SetColor(isBlink ? COLOR::GRAY : COLOR::WHITE);
+			cout << m_renderIcon;
+
+			blinkStart = clock();
+			isBlink = !isBlink;
+			blinkTimes++;
+		}
+	}
 }
 
 void Enemy::Render()

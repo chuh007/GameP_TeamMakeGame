@@ -13,6 +13,8 @@ public:
 	InputHandler();
 public:
 	Key TitleInput();
+	Key GameOverInput();
+	Key InfoInput();
 public:
 	ICommand* HandleInput();
 	std::vector<InputKey> m_vecKeys;

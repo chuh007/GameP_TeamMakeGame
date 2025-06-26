@@ -23,6 +23,7 @@ public:
 	}
 	void Update();
 	void AddObject(GameObject* obj);
+	void ObjectAllDie();
 private:
 	static ObjectManager* m_inst;
 	std::vector<GameObject*> m_objects;

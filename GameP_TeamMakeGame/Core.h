@@ -1,10 +1,13 @@
 #pragma once
-
 #include "Console.h"
 #include "Define.h"
 #include "GameObject.h"
 #include "ICommand.h"
 #include "Enums.h"
+#include "GameScene.h"
+#include "TitleScene.h"
+#include "InfoScene.h"
+#include "GameOverScene.h"
 
 
 class GameObject;
@@ -21,11 +24,13 @@ private:
 	void Init();
 	void Update();
 private:
-	Scene ecurScene;
+	SCENE ecurScene;
 	bool m_isRunning;
-	GameObject* m_player;
-	GameObject* m_muzzle;
-	InputHandler* m_inputHandler;
 	Position m_resoulution;
-	char m_map[MAP_HEIGHT][MAP_WIDTH];
+
+private:
+	GameScene* gameScene;
+	TitleScene* titleScene;
+	InfoScene* infoScene;
+	GameOverScene* gameOverScene;
 };

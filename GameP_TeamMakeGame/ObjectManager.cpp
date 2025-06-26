@@ -37,3 +37,14 @@ void ObjectManager::AddObject(GameObject* obj)
 	m_objects.push_back(obj);
 }
 
+void ObjectManager::ObjectAllDie()
+{
+    int i = 0;
+    for (auto item : m_objects)
+    {
+        item->OnDestroy();
+        SAFE_DELETE(item);
+    }
+    m_objects.clear();
+}
+

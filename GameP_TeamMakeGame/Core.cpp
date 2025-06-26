@@ -1,49 +1,39 @@
-#include "Core.h"
-#include "ObjectManager.h"
-#include "Player.h"
-#include "Muzzle.h"
+ï»¿#include "Core.h"
 #include "Console.h"
-#include "Define.h"
 #include "Mci.h"
-#include "InputHandler.h"
-#include "ICommand.h"
-#include "GameManager.h"
+#include "ObjectManager.h"
+#include "UIManager.h"
 #include "MapManager.h"
-#include "TitleManager.h"
+#include "GameManager.h"
+#include "UpgradeManager.h"
 #include <Windows.h>
 #include <fstream>
 
 Core::Core()
 	: m_isRunning(true)
-	, m_player(nullptr)
-	, m_muzzle(nullptr)
 	, m_resoulution()
-	, m_inputHandler(nullptr)
-	, m_map()
 {
-	ecurScene = Scene::Title;
+	ecurScene = SCENE::Title;
 	SetConsoleSettings(1000, 650, false, TEXT("GAME"));
 	m_resoulution = GetConsoleResolution();
-	m_player = new Player({ 12, 12 });
-	m_muzzle = new Muzzle({ 12, 12 });
-	m_inputHandler = new InputHandler();
-	std::ifstream mapFile("map.txt");
-	if (mapFile.is_open())
-	{
-		for (int i = 0; i < MAP_HEIGHT; ++i)
-		{
-			mapFile >> m_map[i];
-		}
-		mapFile.close();
-	}
-	else cout << "½ÇÆÐÇß´Ù½ÇÆÐÇß´Ù";
+	gameScene = new GameScene();
+	titleScene = new TitleScene();
+	infoScene = new InfoScene();
+	gameOverScene = new GameOverScene();
 }
 
 Core::~Core()
 {
-	SAFE_DELETE(m_player);
-	SAFE_DELETE(m_muzzle);
-	SAFE_DELETE(m_inputHandler);
+
+	ObjectManager::GetInst()->DestoryInst();
+	UIManager::GetInst()->DestoryInst();
+	MapManager::GetInst()->DestoryInst();
+	GameManager::GetInst()->DestoryInst();
+	UpgradeManager::GetInst()->DestoryInst();
+	delete gameScene;
+	delete titleScene;
+	delete infoScene;
+	delete gameOverScene;
 }
 
 void Core::Run()
@@ -55,6 +45,7 @@ void Core::Run()
 		Update();
 		FrameSync(60);
 	}
+	ObjectManager::GetInst()->ObjectAllDie();
 }
 
 void Core::Init()
@@ -64,45 +55,34 @@ void Core::Init()
 
 void Core::Update()
 {
-	if (ecurScene == Scene::Game)
+	switch (ecurScene)
 	{
-		ICommand* cmd = m_inputHandler->HandleInput();
-		if (cmd)
-		{
-			cmd->Execute(m_muzzle);
-			delete cmd;
-		}
-		Gotoxy(0, 0);
-		for (int i = 0; i < MAP_HEIGHT - 1; ++i)
-		{
-			for (int j = 0; j < MAP_WIDTH - 1; ++j)
-			{
-				if (!MapManager::GetInst()
-					->CanRanderThisPos({ j,i }))
-					cout << "  ";
-				else if (m_map[i][j] == '2') cout << "  ";
-				else cout << (m_map[i][j] == '0' ? "¡à" : "¡á");
-			}
-			Gotoxy(0, i + 1);
-		}
-		ObjectManager::GetInst()->Update();
-		GameManager::GetInst()->Update();
-	}
-	else if (ecurScene != Scene::QUIT)
-	{
-		Key input = m_inputHandler->TitleInput();
-		if (input != Key::NONE)
-		{
-			TitleManager::GetInst()->Update(input, ecurScene);
-		}
-		else if (ecurScene == Scene::Title)
-		{
-			TitleManager::GetInst()->RenderTitle();
-		}
-	}
-	else
-	{
+	case SCENE::Title:
+		titleScene->FirstLoadInit();
+		titleScene->Update();
+		ecurScene = titleScene->GetNowScene();
+		break;
+	case SCENE::Game:
+		gameScene->FirstLoadInit();
+		gameScene->Update();
+		ecurScene = gameScene->GetNowScene();
+		break;
+	case SCENE::INFO:
+		infoScene->FirstLoadInit();
+		infoScene->Update();
+		ecurScene = infoScene->GetNowScene();
+		break;
+	case SCENE::GameOver:
+		gameOverScene->FirstLoadInit();
+		gameOverScene->Update();
+		ecurScene = gameOverScene->GetNowScene();
+		break;
+	case SCENE::QUIT:
 		m_isRunning = false;
+		break;
+	default:
+		m_isRunning = false;
+		break;
 	}
 }
 

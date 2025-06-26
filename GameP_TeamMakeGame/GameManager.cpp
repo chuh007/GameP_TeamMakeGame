@@ -9,15 +9,28 @@ GameManager::GameManager()
 	,m_oldTime(clock())
 	,m_currentTime(clock())
 	,m_waveCnt(1)
+	,gameOver(false)
 {
 	UIManager::GetInst()
 		->UpdateUI(UIType::WAVECNT,
 			std::to_string(m_waveCnt));
+	EnemyManager::GetInst()->WaveToEnemySet(m_waveCnt);
 }
 
 GameManager::~GameManager()
 {
 
+}
+
+void GameManager::Init()
+{
+	m_isBattleMode = true;
+	m_oldTime = clock();
+	m_currentTime = clock();
+	m_waveCnt = 1;
+	EnemyManager::GetInst()->WaveToEnemySet(m_waveCnt);
+	gameOver = false;
+	UIManager::GetInst()->UpdateUI(UIType::WAVECNT,std::to_string(m_waveCnt));
 }
 
 void GameManager::Update()
@@ -72,6 +85,6 @@ void GameManager::CheckGameOver()
 	}
 	else
 	{
-		// 게임오버 씬으로 가는 작업
+		gameOver = true;
 	}
 }

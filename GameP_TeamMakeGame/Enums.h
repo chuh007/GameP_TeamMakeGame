@@ -7,9 +7,9 @@ enum class Menu
 {
 	START = 0, INFO, QUIT, FAIL
 };
-enum class Scene
+enum class SCENE
 {
-	Title, Game, INFO, QUIT, END
+	Title, Game, INFO, GameOver , QUIT, END
 };
 enum class Key
 {

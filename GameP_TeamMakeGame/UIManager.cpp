@@ -9,10 +9,6 @@ UIManager::UIManager()
 	, m_Choice2Pos({ GetConsoleResolution().x / 8 - 1, 30 })
 	, m_Choice3Pos({ GetConsoleResolution().x / 4, 30 })
 {
-	Gotoxy(m_waveCntPos.x - 3, m_waveCntPos.y);
-	cout << "웨이브";
-	Gotoxy(m_modeTxtPos.x, m_modeTxtPos.y);
-	cout << "!습격!  ";
 }
 
 UIManager::~UIManager()
@@ -41,5 +37,13 @@ void UIManager::UpdateUI(const UIType& _type,
 		break;
 	}
 	cout << _str;
+}
+
+void UIManager::Init()
+{
+	Gotoxy(m_waveCntPos.x - 3, m_waveCntPos.y);
+	cout << "웨이브";
+	Gotoxy(m_modeTxtPos.x, m_modeTxtPos.y);
+	cout << "!습격!  ";
 }
 

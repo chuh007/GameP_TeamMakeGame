@@ -8,6 +8,7 @@ private:
 	GameManager();
 	~GameManager();
 public:
+	void Init();
 	void Update();
 	static GameManager* GetInst()
 	{
@@ -20,9 +21,12 @@ public:
 		SAFE_DELETE(m_inst);
 	}
 	void CheckGameOver();
+	int GetWaveCount() { return m_waveCnt; }
+	bool isGameOver() { return gameOver; }
 private:
 	static GameManager* m_inst;
 	bool m_isBattleMode;
+	bool gameOver;
 	int m_waveCnt;
 	clock_t m_oldTime;
 	clock_t m_currentTime;
