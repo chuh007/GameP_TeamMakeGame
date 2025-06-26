@@ -23,7 +23,10 @@ public:
 	void CheckGameOver();
 	int GetWaveCount() { return m_waveCnt; }
 	bool isGameOver() { return gameOver; }
+	int GetMuzzleFireCount() { return muzzleFireCount; }
+	void SetMuzzleFireCount(int newMuzzleFireCount) { muzzleFireCount = newMuzzleFireCount; }
 private:
+	int muzzleFireCount;
 	static GameManager* m_inst;
 	bool m_isBattleMode;
 	bool gameOver;

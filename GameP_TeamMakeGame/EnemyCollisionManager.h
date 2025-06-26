@@ -24,8 +24,12 @@ public:
 	void Add(Enemy* _enemy);
 	void CheckCollision(Bullet* _bullet);
 	void UpdateEnemyList();
+	int GetHit() { return hit; }
+	void SetHit(int newhit) { hit = newhit; }
+	void GameOver();
 private:
 	static EnemyCollisionManager* m_inst;
+	int hit;
 	std::vector<Enemy*> m_enemys;
 };
 

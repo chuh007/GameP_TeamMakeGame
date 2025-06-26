@@ -226,3 +226,8 @@ void MapManager::FovLock()
 {
 	m_fovLevel = (m_fovLevel == 1 ? 1 : m_fovLevel - 1);
 }
+
+void MapManager::Init()
+{
+	m_fovLevel = 4;
+}

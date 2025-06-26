@@ -2,6 +2,7 @@
 #include"Scene.h"
 #include "InputHandler.h"
 #include "GameObject.h"
+#include "Muzzle.h"
 #include "Define.h"
 
 class GameScene : public Scene
@@ -14,7 +15,7 @@ public:
 	virtual void Update() override;
 private:
 	GameObject* m_player;
-	GameObject* m_muzzle;
+	Muzzle* m_muzzle;
 	InputHandler* m_inputHandler;
 	char m_map[MAP_HEIGHT][MAP_WIDTH];
 };

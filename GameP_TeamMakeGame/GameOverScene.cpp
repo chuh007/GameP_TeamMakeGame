@@ -1,8 +1,13 @@
 ﻿#include "GameOverScene.h"
 #include "GameManager.h"
+#include "ObjectManager.h"
+#include "EnemyCollisionManager.h"
 #include "Console.h"
 #include "Define.h"
 #include "Enums.h"
+#include <string>
+#include <sstream>
+#include <iomanip>
 
 GameOverScene::GameOverScene()
 {
@@ -22,6 +27,8 @@ void GameOverScene::Init()
 	system("cls");
 	nowScene = SCENE::GameOver;
 	Render();
+	EnemyCollisionManager::GetInst()->SetHit(0);
+	GameManager::GetInst()->SetMuzzleFireCount(0);
 }
 
 void GameOverScene::Update()
@@ -49,52 +56,59 @@ void GameOverScene::Render()
 	int wcoutMode = _setmode(_fileno(stdout), coutMode);
 
 
-	cout << "\t\t\t\t\t=======================================" << '\n';
-	cout << "\t\t\t\t\t=                                     =" << '\n';
+	cout << "\t\t\t\t\t========================================" << '\n';
+	cout << "\t\t\t\t\t=                                      =" << '\n';
 	cout << GetWaveString() << '\n';
 	cout << GetAccuracyString() << '\n';
-	cout << "\t\t\t\t\t=                                     =" << '\n';
-	cout << "\t\t\t\t\t=======================================" << '\n';
+	cout << "\t\t\t\t\t=                                      =" << '\n';
+	cout << "\t\t\t\t\t========================================" << '\n';
+	cout << "\n\n\n \t\t\t\t\t   스페이스바를 눌러 타이틀로 돌아가기";
 }
 
 std::string GameOverScene::GetWaveString()
 {
 	int waveCount = GameManager::GetInst()->GetWaveCount();
 	std::string waveStr = "살아남은 웨이브 : " + std::to_string(waveCount);
-	int totalSpace = 37;
-	int spaceSize = (totalSpace - waveStr.length()) / 2;
+	const int totalSpace = 38;
+
+	int blankTotal = totalSpace - waveStr.length();
+	int leftPadding = blankTotal / 2;
+	int rightPadding = blankTotal - leftPadding;
 
 	std::string wave = "\t\t\t\t\t=";
-	for (int i = 0; i < spaceSize; i++)
-	{
-		wave += ' ';
-	}
+	wave.append(leftPadding, ' ');
 	wave += waveStr;
-	for (int i = 0; i < spaceSize; i++)
-	{
-		wave += ' ';
-	}
+	wave.append(rightPadding, ' ');
 	wave += '=';
+
 	return wave;
 }
 
 std::string GameOverScene::GetAccuracyString()
 {
-	float accuracyCount = 0;// 명중률 넣기
-	std::string accuracyStr = "명중률 : " + std::to_string(accuracyCount);
-	int totalSpace = 37;
-	int spaceSize = (totalSpace - accuracyStr.length()) / 2;
+	int hit = EnemyCollisionManager::GetInst()->GetHit();
+	int fire = GameManager::GetInst()->GetMuzzleFireCount();
+
+	float accuracyCount = 0.0f;
+	if (hit > 0 && fire > 0)
+	{
+		accuracyCount = (float(hit) / fire) * 100.0f;
+	}
+
+	std::stringstream ss;
+	ss << std::fixed << std::setprecision(2) << accuracyCount;
+	std::string accuracyStr = "명중률 : " + ss.str() + "%";
+
+	const int totalSpace = 38;
+	int blankTotal = totalSpace - accuracyStr.length();
+	int leftPadding = blankTotal / 2;
+	int rightPadding = blankTotal - leftPadding;
 
 	std::string accuracy = "\t\t\t\t\t=";
-	for (int i = 0; i < spaceSize; i++)
-	{
-		accuracy += ' ';
-	}
+	accuracy.append(leftPadding, ' ');
 	accuracy += accuracyStr;
-	for (int i = 0; i < spaceSize; i++)
-	{
-		accuracy += ' ';
-	}
+	accuracy.append(rightPadding, ' ');
 	accuracy += '=';
+
 	return accuracy;
 }

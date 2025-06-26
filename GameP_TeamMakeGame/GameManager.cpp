@@ -6,10 +6,11 @@
 GameManager* GameManager::m_inst = nullptr;
 GameManager::GameManager()
 	:m_isBattleMode(true)
-	,m_oldTime(clock())
-	,m_currentTime(clock())
-	,m_waveCnt(1)
-	,gameOver(false)
+	, m_oldTime(clock())
+	, m_currentTime(clock())
+	, m_waveCnt(1)
+	, gameOver(false)
+	, muzzleFireCount(0)
 {
 	UIManager::GetInst()
 		->UpdateUI(UIType::WAVECNT,
@@ -29,6 +30,7 @@ void GameManager::Init()
 	m_currentTime = clock();
 	m_waveCnt = 1;
 	EnemyManager::GetInst()->WaveToEnemySet(m_waveCnt);
+	MapManager::GetInst()->Init();
 	gameOver = false;
 	UIManager::GetInst()->UpdateUI(UIType::WAVECNT,std::to_string(m_waveCnt));
 }

@@ -78,4 +78,10 @@ void EnemyManager::WaveToEnemySet(int Wave)
 	{
 		FasterPer = 10;
 	}
+	else
+	{
+		FasterPer = 0;
+		InvisiblePer = 0;
+		FlipPer = 0;
+	}
 }

@@ -22,6 +22,7 @@ public:
 	bool CanRanderThisPos(const Position& _pos);
 	void SetRanderDir(const Dir& _dir);
 	void FovLock();
+	void Init();
 private:
 	static MapManager* m_inst;
 	char(*m_curRanderableMap) [MAP_WIDTH];

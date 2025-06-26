@@ -3,6 +3,7 @@
 
 EnemyCollisionManager* EnemyCollisionManager::m_inst = __nullptr;
 EnemyCollisionManager::EnemyCollisionManager()
+	:hit(0)
 {
 }
 
@@ -26,6 +27,7 @@ void EnemyCollisionManager::CheckCollision(Bullet* _bullet)
 		{
 			m_enemys[i]->CheckFeedback(_bullet->GetDamage());
 			_bullet->isDead = true;
+			hit++;
 		}
 	}
 }
@@ -40,4 +42,9 @@ void EnemyCollisionManager::UpdateEnemyList()
 
 		}
 	}
+}
+
+void EnemyCollisionManager::GameOver()
+{
+	m_enemys.clear();
 }
