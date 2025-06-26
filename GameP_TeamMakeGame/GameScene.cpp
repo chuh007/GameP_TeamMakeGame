@@ -43,6 +43,7 @@ void GameScene::Init()
 	m_player = new Player({ 12, 12 });
 	m_muzzle = new Muzzle({ 12, 12 });
 	Gotoxy(0, 0);
+	MapManager::GetInst()->SetRanderDir(Dir::UP);
 	for (int i = 0; i < MAP_HEIGHT - 1; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH - 1; ++j)

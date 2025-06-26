@@ -30,6 +30,7 @@ void GameManager::Init()
 	m_currentTime = clock();
 	m_waveCnt = 1;
 	EnemyManager::GetInst()->WaveToEnemySet(m_waveCnt);
+	EnemyManager::GetInst()->Init();
 	MapManager::GetInst()->Init();
 	gameOver = false;
 	UIManager::GetInst()->UpdateUI(UIType::WAVECNT,std::to_string(m_waveCnt));

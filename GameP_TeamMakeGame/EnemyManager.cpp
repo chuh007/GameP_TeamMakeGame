@@ -54,6 +54,12 @@ int EnemyManager::SetHp(int baseHp, float hpPer)
 	return (int)(baseHp * hpPer);
 }
 
+void EnemyManager::Init()
+{
+	oldTime = clock();
+	currentTime = clock();
+}
+
 void EnemyManager::WaveToEnemySet(int Wave)
 {
 	lifePer = max(1.0f, pow(1.15f, Wave / 5));

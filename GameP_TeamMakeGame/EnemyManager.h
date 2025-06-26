@@ -26,6 +26,7 @@ public:
 	void WaveToEnemySet(int Wave);
 	float GetCurrntTime() { return currentTime; }
 	int SetHp(int baseHp, float hpPer);
+	void Init();
 private:
 	static EnemyManager* m_inst;
 private:

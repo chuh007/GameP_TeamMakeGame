@@ -94,9 +94,6 @@
     <ClCompile Include="MapManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyManager.cpp">
-      <Filter>03.Object</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyCollisionManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
@@ -131,6 +128,9 @@
       <Filter>04.Scene</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
   </ItemGroup>
@@ -195,9 +195,6 @@
     <ClInclude Include="MapManager.h">
       <Filter>02.Manager</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>03.Object</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>03.Object</Filter>
     </ClInclude>
@@ -238,6 +235,9 @@
       <Filter>99.Headers</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
       <Filter>02.Manager</Filter>
     </ClInclude>
   </ItemGroup>
