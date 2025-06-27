@@ -62,7 +62,7 @@ void GameOverScene::Render()
 	cout << GetAccuracyString() << '\n';
 	cout << "\t\t\t\t\t=                                      =" << '\n';
 	cout << "\t\t\t\t\t========================================" << '\n';
-	cout << "\n\n\n \t\t\t\t\t ESC를 눌러 타이틀로 돌아가기";
+	cout << "\n\n\n \t\t\t\t\t      ESC를 눌러 타이틀로 돌아가기";
 }
 
 std::string GameOverScene::GetWaveString()
