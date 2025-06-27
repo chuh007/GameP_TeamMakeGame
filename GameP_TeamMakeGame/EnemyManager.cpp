@@ -19,12 +19,13 @@ EnemyManager::EnemyManager()
 	FasterPer = 0;
 	InvisiblePer = 0;
 	FlipPer = 0;
+	spawnTimeMultiply = 1.5f;
 }
 
 void EnemyManager::Update()
 {
 	currentTime = clock();
-	if (currentTime - oldTime >= SPAWN_TIME * 1000)
+	if (currentTime - oldTime >= SPAWN_TIME * 1000 * spawnTimeMultiply)
 	{
 		oldTime = currentTime;
 		Dir dir = (Dir)(rand() % 4);
@@ -68,26 +69,31 @@ void EnemyManager::WaveToEnemySet(int Wave)
 		FasterPer = 20;
 		FlipPer = 10;
 		InvisiblePer = 5;
+		spawnTimeMultiply = 0.75f;
 	}
 	else if (Wave >= 15)
 	{
 		FasterPer = 15;
 		FlipPer = 7;
 		InvisiblePer = 2;
+		spawnTimeMultiply = 0.85f;
 	}
 	else if (Wave >= 10)
 	{
 		FlipPer = 5;
 		FasterPer = 12;
+		spawnTimeMultiply = 1;
 	}
 	else if (Wave >= 5)
 	{
 		FasterPer = 10;
+		spawnTimeMultiply = 1.25f;
 	}
 	else
 	{
 		FasterPer = 0;
 		InvisiblePer = 0;
 		FlipPer = 0;
+		spawnTimeMultiply = 1.5f;
 	}
 }

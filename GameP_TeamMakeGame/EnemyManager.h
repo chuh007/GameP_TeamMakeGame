@@ -34,6 +34,7 @@ private:
 	clock_t currentTime;
 	int timeMultiply;
 	float lifePer;
+	float spawnTimeMultiply;
 
 private:
 	int FasterPer;
