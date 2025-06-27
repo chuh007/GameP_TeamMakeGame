@@ -4,7 +4,7 @@
 #include "EnemyCollisionManager.h"
 #include "GameManager.h"
 
-Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : GameObject ({ 0, 0 })
+Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : CharacterObject({ 0, 0 })
 {
 	EnemyCollisionManager::GetInst()->Add(this);
 	dir = myDir;
@@ -98,7 +98,7 @@ void Enemy::Update()
 	if (currentTime - oldTime >= time)
 	{
 		oldTime = currentTime;
-		Move();
+		Move(dir);
 	}
 	if (PlayerFeedback())
 	{
@@ -155,8 +155,22 @@ void Enemy::Render()
 	
 }
 
-void Enemy::Move()
+void Enemy::Move(Dir _dir)
 {
-	m_pos = { m_pos.x + moveX, m_pos.y + moveY };
+	switch (_dir)
+	{
+	case Dir::UP:
+		--m_pos.y;
+		break;
+	case Dir::DOWN:
+		++m_pos.y;
+		break;
+	case Dir::LEFT:
+		--m_pos.x;
+		break;
+	case Dir::RIGHT:
+		++m_pos.x;
+		break;
+	}
 }
   

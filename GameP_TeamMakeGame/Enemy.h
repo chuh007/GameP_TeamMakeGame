@@ -1,10 +1,10 @@
 #pragma once
-#include "GameObject.h"
+#include "CharacterObject.h"
 #include "Bullet.h"
 #include <Time.h>
 
 
-class Enemy : public GameObject
+class Enemy : public CharacterObject
 {
 public:
 	Enemy(Dir myDir, float speed, int lifeSet);
@@ -13,9 +13,9 @@ public:
 	bool CheckFinded(const Dir playerDir);
 	virtual void Update() override;
 	virtual void Render() override;
+	void Move(Dir _dir) override;
 protected:
 	bool PlayerFeedback();
-	void Move();
 	void Hit();
 	void DeadBlink();
 protected:
