@@ -32,21 +32,6 @@ Key InputHandler::TitleInput()
 	return Key::NONE;
 }
 
-Key InputHandler::GameOverInput()
-{
-	for (auto& key : m_vecKeys)
-	{
-		bool isDown = (GetAsyncKeyState(key.vk) & 0x8000) != 0;
-		if (isDown)
-		{
-			if (key.key == Key::SPACE)
-				return key.key;
-		}
-	}
-	Sleep(30);
-	return Key::NONE;
-}
-
 
 
 Key InputHandler::InfoInput()

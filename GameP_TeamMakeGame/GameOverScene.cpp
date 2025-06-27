@@ -33,8 +33,8 @@ void GameOverScene::Init()
 
 void GameOverScene::Update()
 {
-	Key key = m_inputHandler->GameOverInput();
-	if (key == Key::SPACE)
+	Key key = m_inputHandler->InfoInput();
+	if (key == Key::ESC)
 	{
 		isFirstLoadScene = true;
 		nowScene = SCENE::Title;
@@ -62,7 +62,7 @@ void GameOverScene::Render()
 	cout << GetAccuracyString() << '\n';
 	cout << "\t\t\t\t\t=                                      =" << '\n';
 	cout << "\t\t\t\t\t========================================" << '\n';
-	cout << "\n\n\n \t\t\t\t\t   스페이스바를 눌러 타이틀로 돌아가기";
+	cout << "\n\n\n \t\t\t\t\t ESC를 눌러 타이틀로 돌아가기";
 }
 
 std::string GameOverScene::GetWaveString()
