@@ -29,8 +29,6 @@ GameScene::GameScene()
 
 GameScene::~GameScene()
 {
-	SAFE_DELETE(m_player);
-	SAFE_DELETE(m_muzzle);
 	SAFE_DELETE(m_inputHandler);
 }
 
@@ -39,11 +37,11 @@ void GameScene::Init()
 	system("cls");
 	GameManager::GetInst()->Init();
 	UIManager::GetInst()->Init();
+	MapManager::GetInst()->SetRanderDir(Dir::UP);
 	nowScene = SCENE::Game;
 	m_player = new Player({ 12, 12 });
 	m_muzzle = new Muzzle({ 12, 12 });
 	Gotoxy(0, 0);
-	MapManager::GetInst()->SetRanderDir(Dir::UP);
 	for (int i = 0; i < MAP_HEIGHT - 1; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH - 1; ++j)
@@ -64,8 +62,8 @@ void GameScene::Update()
 	if (cmd)
 	{
 		cmd->Execute(m_muzzle);
-		delete cmd;
 	}
+	delete cmd;
 	Gotoxy(0, 0);
 	for (int i = 0; i < MAP_HEIGHT - 1; ++i)
 	{

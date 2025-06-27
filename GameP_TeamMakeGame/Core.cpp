@@ -5,7 +5,9 @@
 #include "UIManager.h"
 #include "MapManager.h"
 #include "GameManager.h"
+#include "EnemyManager.h"
 #include "UpgradeManager.h"
+#include "EnemyCollisionManager.h"
 #include <Windows.h>
 #include <fstream>
 
@@ -29,11 +31,13 @@ Core::~Core()
 	UIManager::GetInst()->DestoryInst();
 	MapManager::GetInst()->DestoryInst();
 	GameManager::GetInst()->DestoryInst();
+	EnemyManager::GetInst()->DestoryInst();
 	UpgradeManager::GetInst()->DestoryInst();
-	delete gameScene;
-	delete titleScene;
-	delete infoScene;
-	delete gameOverScene;
+	EnemyCollisionManager::GetInst()->DestoryInst();
+	SAFE_DELETE(gameScene);
+	SAFE_DELETE(titleScene);
+	SAFE_DELETE(infoScene);
+	SAFE_DELETE(gameOverScene);
 }
 
 void Core::Run()
