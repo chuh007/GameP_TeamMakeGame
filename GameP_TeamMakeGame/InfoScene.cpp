@@ -17,6 +17,7 @@ void InfoScene::Init()
 {
 	system("cls");
 	nowScene = SCENE::INFO;
+    SetColor();
 	RenderInfo();
 }
 

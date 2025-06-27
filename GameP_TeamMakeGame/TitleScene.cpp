@@ -22,6 +22,7 @@ void TitleScene::Init()
 	system("cls");
 	eMenu = Menu::START;
 	nowScene = SCENE::Title;
+	SetColor();
 }
 
 void TitleScene::Update()
