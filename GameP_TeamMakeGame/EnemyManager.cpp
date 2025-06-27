@@ -69,7 +69,18 @@ void EnemyManager::WaveToEnemySet(int Wave)
 		FasterPer = 20;
 		FlipPer = 10;
 		InvisiblePer = 5;
-		spawnTimeMultiply = 0.75f;
+		if (Wave >= 50)
+		{
+			spawnTimeMultiply = 0.3f;
+		}
+		else if (Wave >= 30)
+		{
+			spawnTimeMultiply = 0.5f;
+		}
+		else
+		{
+			spawnTimeMultiply = 0.75f;
+		}
 	}
 	else if (Wave >= 15)
 	{
