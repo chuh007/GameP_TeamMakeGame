@@ -3,6 +3,7 @@
 #include "EnemyData.h"
 #include "EnemyCollisionManager.h"
 #include "GameManager.h"
+#include "Mci.h"
 
 Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : CharacterObject({ 0, 0 })
 {
@@ -12,8 +13,6 @@ Enemy::Enemy(Dir myDir, float timeMultiply, int lifeMultiply) : CharacterObject(
 	currentTime = clock();
 	int dirMove = (int)myDir;
 	m_pos = { SPAWN_X[dirMove] , SPAWN_Y[dirMove] };
-	moveX = MOVE_X[dirMove];
-	moveY = MOVE_Y[dirMove];
 	time = MOVE_TIME * 1000 * timeMultiply;
 	life = LIFE_INIT * lifeMultiply;
 	m_renderIcon = "¡Ø";
@@ -25,6 +24,7 @@ void Enemy::CheckFeedback(const int& _damage)
 	Hit();
 	if (life <= 0)
 	{
+		PlaySoundID(SOUNDID::HIT);
 		isDead = true;
 		EnemyCollisionManager::GetInst()->UpdateEnemyList();
 	}
@@ -124,6 +124,7 @@ void Enemy::Update()
 
 void Enemy::DeadBlink()
 {
+	PlaySoundID(SOUNDID::GAMEOVER);
 	const int BLINK_COUNT = 10;
 	const double BLINK_INTERVAL = 0.1;
 
@@ -150,9 +151,7 @@ void Enemy::DeadBlink()
 
 void Enemy::Render()
 {
-	GameObject::Render();
-	//}
-	
+	Base::Render();	
 }
 
 void Enemy::Move(Dir _dir)

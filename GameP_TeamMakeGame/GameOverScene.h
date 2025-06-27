@@ -15,6 +15,8 @@ public:
 	virtual void Init() override;
 	virtual void Update() override;
 private:
+	void WaveMessage();
+	void Message(std::string msg);
 	void Render();
 	std::string GetWaveString();
 	std::string GetAccuracyString();

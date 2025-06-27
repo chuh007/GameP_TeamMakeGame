@@ -50,6 +50,7 @@ void Core::Run()
 		FrameSync(60);
 	}
 	ObjectManager::GetInst()->ObjectAllDie();
+	ReleaseAllSounds();
 }
 
 void Core::Init()

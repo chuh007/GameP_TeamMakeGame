@@ -2,6 +2,7 @@
 #include "Console.h"
 #include "InputHandler.h"
 #include "Define.h"
+#include "Mci.h"
 
 TitleScene::TitleScene()
 {
@@ -19,9 +20,11 @@ TitleScene::~TitleScene()
 
 void TitleScene::Init()
 {
+	InitAllSounds();
 	system("cls");
 	eMenu = Menu::START;
 	nowScene = SCENE::Title;
+	PlaySoundID(SOUNDID::TITLE , true);
 	SetColor();
 }
 
@@ -69,6 +72,7 @@ void TitleScene::KeyCheck()
 			isFirstLoadScene = true;
 			nowScene = SCENE::Game;
 			system("cls");
+			ReleaseAllSounds();
 			return;
 		}
 		if (eMenu == Menu::INFO)
@@ -83,6 +87,7 @@ void TitleScene::KeyCheck()
 			isFirstLoadScene = true;
 			nowScene = SCENE::QUIT;
 			system("cls");
+			ReleaseAllSounds();
 			return;
 		}
 		break;

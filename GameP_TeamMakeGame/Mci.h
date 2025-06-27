@@ -14,7 +14,7 @@ void PlayMciDevice(UINT _deviceId,
 
 enum class SOUNDID
 {
-    BGM, CLICK, EXPLOSION, END
+    BGM, ATTACK, GAMEOVER, HIT, TITLE, UPGRADE, GAMEOVERBGM, END
 };
 struct SoundEntry
 {

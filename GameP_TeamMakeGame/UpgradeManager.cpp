@@ -1,4 +1,5 @@
 #include "UpgradeManager.h"
+#include "Mci.h"
 
 UpgradeManager* UpgradeManager::m_inst = nullptr;
 UpgradeManager::UpgradeManager()
@@ -24,12 +25,15 @@ void UpgradeManager::Upgrade(Key _key)
 	switch (_key)
 	{
 	case Key::UPGRADE1:
+		PlaySoundID(SOUNDID::UPGRADE);
 		m_damage++;
 		break;
 	case Key::UPGRADE2:
+		PlaySoundID(SOUNDID::UPGRADE);
 		if (m_firedelay > 0) m_firedelay--;
 		break;
 	case Key::UPGRADE3:
+		PlaySoundID(SOUNDID::UPGRADE);
 		m_isbarrier = true;
 		break;
 	}

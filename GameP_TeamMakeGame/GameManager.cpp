@@ -3,6 +3,9 @@
 #include "UpgradeManager.h"
 #include "MapManager.h"
 #include "UIManager.h"
+#include "Mci.h"
+
+
 GameManager* GameManager::m_inst = nullptr;
 GameManager::GameManager()
 	:m_isBattleMode(true)

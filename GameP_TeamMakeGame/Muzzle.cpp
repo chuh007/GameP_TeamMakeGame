@@ -4,6 +4,7 @@
 #include "MapManager.h"
 #include "UpgradeManager.h"
 #include "UIManager.h"
+#include "Mci.h"
 
 Muzzle::Muzzle(Position _pos)
 	: m_curDir(Dir::UP)
@@ -69,6 +70,7 @@ void Muzzle::Fire()
 	m_curdelay = m_delay;
 	m_fireCount++;
 	new Bullet(m_pos, m_curDir, 10, m_damage);
+	PlaySoundID(SOUNDID::ATTACK);
 }
 
 int Muzzle::GetFireCount()

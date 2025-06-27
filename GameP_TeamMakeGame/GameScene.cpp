@@ -8,6 +8,7 @@
 #include "EnemyCollisionManager.h"
 #include "UIManager.h"
 #include "MapManager.h"
+#include "Mci.h"
 #include <fstream>
 
 
@@ -35,9 +36,11 @@ GameScene::~GameScene()
 void GameScene::Init()
 {
 	system("cls");
+	InitAllSounds();
 	GameManager::GetInst()->Init();
 	UIManager::GetInst()->Init();
 	MapManager::GetInst()->SetRanderDir(Dir::UP);
+	PlaySoundID(SOUNDID::BGM, true);
 	nowScene = SCENE::Game;
 	m_player = new Player({ 12, 12 });
 	m_muzzle = new Muzzle({ 12, 12 });
@@ -84,6 +87,7 @@ void GameScene::Update()
 		GameManager::GetInst()->SetMuzzleFireCount(m_muzzle->GetFireCount());
 		isFirstLoadScene = true;
 		nowScene = SCENE::GameOver;
+		ReleaseAllSounds();
 		ObjectManager::GetInst()->ObjectAllDie();
 		EnemyCollisionManager::GetInst()->GameOver();
 	}
