@@ -14,8 +14,7 @@ Muzzle::Muzzle(Position _pos)
 {
 	m_renderIcon = "бу";
 	m_pos = { _pos.x , _pos.y - 1 };
-	m_isranderable = true;
-	m_delay = 20;
+	m_delay = 25;
 	m_curdelay = 0;
 }
 
@@ -32,7 +31,6 @@ void Muzzle::Render()
 
 void Muzzle::Move(Dir _dir)
 {
-	OnDestroy();
 	m_curDir = _dir;
 	MapManager::GetInst()->SetRanderDir(_dir);
 	switch (_dir)

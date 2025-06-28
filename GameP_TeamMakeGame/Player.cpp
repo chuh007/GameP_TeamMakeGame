@@ -6,7 +6,6 @@ Player::Player(const Position& _pos)
 {
 	m_renderIcon = "¡×";
 	m_pos = _pos;
-	m_isranderable = true;
 }
 
 void Player::Update()

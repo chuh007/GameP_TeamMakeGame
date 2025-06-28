@@ -21,6 +21,5 @@ protected:
 	Position m_pos;
 	Position m_beforepos;
 	string m_renderIcon;
-	bool m_isranderable;
 };
 

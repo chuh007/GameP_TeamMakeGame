@@ -30,7 +30,7 @@ void UpgradeManager::Upgrade(Key _key)
 		break;
 	case Key::UPGRADE2:
 		PlaySoundID(SOUNDID::UPGRADE);
-		if (m_firedelay > 0) m_firedelay--;
+		if (m_firedelay > 5) m_firedelay--;
 		break;
 	case Key::UPGRADE3:
 		PlaySoundID(SOUNDID::UPGRADE);

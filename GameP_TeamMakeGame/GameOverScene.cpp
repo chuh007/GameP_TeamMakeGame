@@ -52,7 +52,7 @@ void GameOverScene::WaveMessage()
 	}
 	else if (waveCount >= 40)
 	{
-		Message("40웨이브를 넘기시다니 이제는 이겜의 대부분의 컨텐츠를 하셨네요.");
+		Message("40웨이브를 넘기시다니 이제는 이게임의 대부분의 컨텐츠를 하셨네요.");
 	}
 	else if (waveCount >= 30)
 	{
@@ -76,7 +76,7 @@ void GameOverScene::WaveMessage()
 	}
 	else if (waveCount >= 4)
 	{
-		Message("1웨이브만 넘기면 이게임이 재밌어지기 시작할거에요");
+		Message("딱 한 웨이브만 넘기면 이게임이 재밌어지기 시작할거에요");
 	}
 	else if (waveCount >= 3)
 	{

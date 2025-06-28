@@ -13,7 +13,6 @@ Bullet::Bullet(const Position& _pos
 	, m_damage(_damage)
 {
 	m_renderIcon = "*";
-	m_isranderable = true;
 }
 
 Bullet::~Bullet()

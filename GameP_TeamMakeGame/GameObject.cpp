@@ -4,10 +4,9 @@
 #include "MapManager.h"
 
 GameObject::GameObject(Position _pos)
-	: m_pos({ 0,0 })
+	: m_pos(_pos)
 	, m_beforepos({0,0})
 	, isDead(false)
-	, m_isranderable(false)
 {
 	ObjectManager::GetInst()->AddObject(this);
 }
