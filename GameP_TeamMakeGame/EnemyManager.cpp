@@ -73,9 +73,17 @@ void EnemyManager::WaveToEnemySet(int Wave)
 		{
 			spawnTimeMultiply = 0.3f;
 		}
+		else if (Wave >= 40)
+		{
+			spawnTimeMultiply = 0.4f;
+		}
 		else if (Wave >= 30)
 		{
 			spawnTimeMultiply = 0.5f;
+		}
+		else if (Wave >= 22)
+		{
+			spawnTimeMultiply = 0.65f;
 		}
 		else
 		{
@@ -87,24 +95,52 @@ void EnemyManager::WaveToEnemySet(int Wave)
 		FasterPer = 15;
 		FlipPer = 7;
 		InvisiblePer = 2;
-		spawnTimeMultiply = 0.85f;
+		if (Wave >= 17)
+		{
+			spawnTimeMultiply = 0.8f;
+		}
+		else
+		{
+			spawnTimeMultiply = 0.825f;
+		}
 	}
 	else if (Wave >= 10)
 	{
+		if (Wave >= 12)
+		{
+			spawnTimeMultiply = 0.85f;
+		}
+		else
+		{
+			spawnTimeMultiply = 0.925f;
+		}
 		FlipPer = 5;
 		FasterPer = 12;
-		spawnTimeMultiply = 1;
 	}
 	else if (Wave >= 5)
 	{
 		FasterPer = 10;
-		spawnTimeMultiply = 1.25f;
+		if (Wave >= 7)
+		{
+			spawnTimeMultiply = 1;
+		}
+		else
+		{
+			spawnTimeMultiply = 1.15f;
+		}
 	}
 	else
 	{
+		if (Wave >= 2)
+		{
+			spawnTimeMultiply = 1.25f;
+		}
+		else
+		{
+			spawnTimeMultiply = 1.5f;
+		}
 		FasterPer = 0;
 		InvisiblePer = 0;
 		FlipPer = 0;
-		spawnTimeMultiply = 1.5f;
 	}
 }
