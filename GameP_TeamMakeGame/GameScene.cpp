@@ -66,7 +66,7 @@ void GameScene::Update()
 	{
 		cmd->Execute(m_muzzle);
 	}
-	delete cmd;
+	delete cmd; 
 	Gotoxy(0, 0);
 	for (int i = 0; i < MAP_HEIGHT - 1; ++i)
 	{

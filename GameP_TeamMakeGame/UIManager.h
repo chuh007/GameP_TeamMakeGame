@@ -30,5 +30,8 @@ private:
 	Position m_Choice1Pos;
 	Position m_Choice2Pos;
 	Position m_Choice3Pos;
+	Position m_descriptionPos;
+	Position m_attackPowerPos;
+	Position m_attackDelayPos;
 };
 

@@ -1,4 +1,5 @@
 #include "UpgradeManager.h"
+#include "UIManager.h"
 #include "Mci.h"
 
 UpgradeManager* UpgradeManager::m_inst = nullptr;
@@ -8,6 +9,10 @@ UpgradeManager::UpgradeManager()
 	, m_damage(10)
 	, m_CanupgradeCount(0)
 {
+	UIManager::GetInst()->
+		UpdateUI(UIType::ATTACKPOWER, std::to_string(m_damage));
+	UIManager::GetInst()->
+		UpdateUI(UIType::ATTACKDELAY, std::to_string(m_firedelay));
 }
 
 UpgradeManager::~UpgradeManager()
@@ -37,6 +42,10 @@ void UpgradeManager::Upgrade(Key _key)
 		m_isbarrier = true;
 		break;
 	}
+	UIManager::GetInst()->
+		UpdateUI(UIType::ATTACKPOWER, std::to_string(m_damage));
+	UIManager::GetInst()->
+		UpdateUI(UIType::ATTACKDELAY, std::to_string(m_firedelay));
 }
 
 bool UpgradeManager::GetBarrier()

@@ -63,8 +63,16 @@ void GameManager::Update()
 		m_isBattleMode = true;
 		m_waveCnt++;
 		EnemyManager::GetInst()->WaveToEnemySet(m_waveCnt);
+		UIManager::GetInst()
+			->UpdateUI(UIType::DESCRIPTION,
+				"            ");
 		if (m_waveCnt % 5 == 0)
+		{
 			MapManager::GetInst()->FovLock();
+			UIManager::GetInst()
+				->UpdateUI(UIType::DESCRIPTION,
+					"적이 강해집니다...");
+		}
 		UIManager::GetInst()
 			->UpdateUI(UIType::WAVECNT,
 				std::to_string(m_waveCnt));
